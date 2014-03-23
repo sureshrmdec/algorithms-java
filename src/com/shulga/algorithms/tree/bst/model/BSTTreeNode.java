@@ -1,25 +1,16 @@
-package com.shulga.algorithms.tree.model;
+package com.shulga.algorithms.tree.bst.model;
 
-public class BSTTreeNode<T> {
-	private int data;
-	private T value;
+public class BSTTreeNode {
+	private Number data;
 	private BSTTreeNode left;
 	private BSTTreeNode right;
 
-	public int getData() {
-		return data;
+	public Long getData() {
+		return data.longValue();
 	}
 
-	public void setData(int data) {
+	public void setData(Number data) {
 		this.data = data;
-	}
-
-	public T getValue() {
-		return value;
-	}
-
-	public void setValue(T value) {
-		this.value = value;
 	}
 
 	public BSTTreeNode getLeft() {
