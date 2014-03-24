@@ -4,6 +4,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
+/**
+ * @author ievgen
+ * 
+ */
 public class Graph {
 	private final int MAX_VERTS = 30;
 	private Vertex[] vertixList;
@@ -67,12 +71,12 @@ public class Graph {
 		Stack<Integer> stack = new Stack<Integer>();
 		stack.push(0);
 		vertixList[0].setVisited(true);
-		while(!stack.isEmpty()){
+		while (!stack.isEmpty()) {
 			Integer currentVertex = stack.peek();
 			int v = getAdjUnvisitedVertex(currentVertex);
-			if(v==-1){
+			if (v == -1) {
 				stack.pop();
-			}else{
+			} else {
 				stack.push(v);
 				vertixList[v].setVisited(true);
 				displayVertex(currentVertex);
@@ -81,7 +85,76 @@ public class Graph {
 			}
 		}
 	}
-	
+
+	public void topologicalSort() {
+		char[] sorted = new char[nVerts];
+		int origVerts = nVerts;
+		while (nVerts > 0) {
+			int current = noSuccessors();
+			if (current == -1) {
+				System.out.println("ERROR: cycles exits in graph");
+				return;
+			}
+			sorted[nVerts - 1] = vertixList[current].getLabel();
+			deleteVertex(current);
+		}
+		System.out.println("Topological sort:");
+		for (int i = 0; i < origVerts; i++) {
+			System.out.print(sorted[i]);
+		}
+	}
+
+	private void deleteVertex(int delVert) {
+		// if not the last
+		if (delVert != nVerts - 1) {
+			for (int i = delVert; i < nVerts - 1; i++) {
+				vertixList[i] = vertixList[i + 1];
+			}
+
+			for (int row = delVert; row < nVerts - 1; row++) {
+				moveRowUp(row, nVerts);
+			}
+
+			for (int col = 0; col < nVerts - 1; col++) {
+				moveColLeft(col, nVerts);
+			}
+		}
+		nVerts--;
+		
+	}
+
+	private void moveColLeft(int col, int length) {
+		for (int row = 0; row < length; row++) {
+			adjMatrix[row][col] = adjMatrix[row + 1][col];
+		}
+	}
+
+	private void moveRowUp(int row, int length) {
+		for (int col = 0; col < length; col++) {
+			adjMatrix[row][col] = adjMatrix[row][col + 1];
+		}
+	}
+
+	/**
+	 * @return vertex that does not have successors or -1
+	 */
+	private int noSuccessors() {
+		boolean isEdge;
+		for (int row = 0; row < nVerts; row++) {
+			isEdge = false;
+			for (int col = 0; col < nVerts; col++) {
+				if (adjMatrix[row][col] == 1) {
+					isEdge = true;
+					break;
+				}
+			}
+			if (!isEdge) {
+				return row;
+			}
+		}
+		return -1;
+	}
+
 	// return unvisited vertex adjacent to v
 	public int getAdjUnvisitedVertex(int v) {
 		for (int i = 0; i < MAX_VERTS; i++) {
