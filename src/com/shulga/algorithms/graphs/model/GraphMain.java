@@ -2,7 +2,7 @@ package com.shulga.algorithms.graphs.model;
 
 public class GraphMain {
 	public static void main(String[] args) {
-		Graph g = new Graph();
+		GraphMatrix g = new GraphMatrix();
 		addVertixes(g);
 
 		g.addEdge(0, 1); // AB
@@ -23,8 +23,8 @@ public class GraphMain {
 		g.mst();
 	}
 	
-	private static Graph getGraphForMST(){
-		Graph g = new Graph();
+	private static GraphMatrix getGraphForMST(){
+		GraphMatrix g = new GraphMatrix();
 		addVertixes(g);
 		
 		g.addEdge(0, 1);
@@ -40,7 +40,7 @@ public class GraphMain {
 		return g;
 	}
 	
-	public static void addVertixes(Graph g){
+	public static void addVertixes(GraphMatrix g){
 		g.addVertex('A');
 		g.addVertex('B');
 		g.addVertex('C');
