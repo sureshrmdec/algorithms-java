@@ -1,9 +1,13 @@
 package com.shulga.algorithms.graphs.model;
 
-import java.util.Iterator;
+import java.util.List;
 
 public interface Graph {
 	void addEdge(int v, int w);
 	
-	Iterator<Integer> adj(int v);
+	List<Integer> adj(int v);
+	
+	int V();
+	
+	int E();
 }

@@ -2,6 +2,7 @@ package com.shulga.algorithms.graphs.model;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -171,8 +172,21 @@ public class GraphMatrix implements Graph {
 	}
 
 	@Override
-	public Iterator<Integer> adj(int v) {
+	public List adj(int v) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int V() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int E() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
