@@ -8,11 +8,21 @@ public class GraphListMain {
 		g.addEdge(1, 2); // BC
 		g.addEdge(0, 3); // AD
 		g.addEdge(3, 4); // DE
+		//separate
+		g.addEdge(5, 6);
 		
-		DepthFirstPath path = new DepthFirstPath(g, 2);
-		System.out.println(path.hasPathTo(4));
-		System.out.println(path.hasPathTo(5));
-		System.out.println(path.pathTo(4).toString());
+		DepthFirstPath depthPath = new DepthFirstPath(g, 2);
+		System.out.println(depthPath.hasPathTo(4));
+		System.out.println(depthPath.hasPathTo(5));
+		System.out.println(depthPath.pathTo(4).toString());
+		
+		BreadthFirstPath breadthPath = new BreadthFirstPath(g, 0);
+		System.out.println(breadthPath.pathTo(4).toString());
+		
+		ConnectionPath conPath = new ConnectionPath(g);
+		System.out.println(conPath.isConnected(1, 4));
+		System.out.println(conPath.isConnected(1, 5));
+		System.out.println(conPath.isConnected(6, 5));
 		
 		
 	}
