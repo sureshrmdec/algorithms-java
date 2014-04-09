@@ -1,6 +1,6 @@
 package com.shulga.algorithms.graphs.model;
 
-public class GraphMain {
+public class GraphMatrixMain {
 	public static void main(String[] args) {
 		GraphMatrix g = new GraphMatrix();
 		addVertixes(g);

@@ -12,29 +12,32 @@ public class DepthFirstPath {
 	public DepthFirstPath(Graph graph, int source) {
 		this.graph = graph;
 		this.source = source;
+		marked = new boolean[graph.V()];
+		edgeTo = new Integer[graph.V()];
+		dfs(graph, source);
 	}
 
 	public boolean hasPathTo(int dest) {
 		return edgeTo[dest] != null;
 	}
 
-	public List pathTo(int dest) {
+	public List<Integer> pathTo(int dest) {
 		if (!hasPathTo(dest)) {
 			return null;
 		}
 		Stack<Integer> path = new Stack<Integer>();
-		for (int x = dest; x != source; x = edgeTo[dest]) {
+		for (int x = dest; x != source; x = edgeTo[x]) {
 			path.add(x);
 		}
 		path.add(source);
-		return path;
+		return path;	
 	}
 
 	private void dfs(Graph graph, int source) {
 		marked[source] = true;
 		for (Integer vertex : graph.adj(source)) {
 			if (!marked[vertex]) {
-				dfs(graph, source);
+				dfs(graph, vertex);
 				edgeTo[vertex] = source;
 			}
 		}
