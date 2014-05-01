@@ -3,6 +3,15 @@ package com.shulga.algorithms.graphs.model;
 public class Vertex {
 	private char label;
 	private boolean visited;
+	public boolean isInTree;
+	
+	public boolean isInTree() {
+		return isInTree;
+	}
+
+	public void setInTree(boolean isInTree) {
+		this.isInTree = isInTree;
+	}
 
 	public Vertex(char label) {
 		this.label = label;

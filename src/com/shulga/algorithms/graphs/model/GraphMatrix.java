@@ -3,8 +3,11 @@ package com.shulga.algorithms.graphs.model;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
+
+import javax.jws.Oneway;
 
 /**
  * @author ievgen
@@ -12,7 +15,9 @@ import java.util.Stack;
  */
 public class GraphMatrix implements Graph {
 	private final int MAX_VERTS = 30;
+	private final int INFINITY = Integer.MAX_VALUE;
 	private Vertex[] vertixList;
+	private PriorityQ pq = new PriorityQ();
 	private int[][] adjMatrix;
 	private int nVerts;
 
@@ -29,6 +34,58 @@ public class GraphMatrix implements Graph {
 	public void addEdge(int start, int end) {
 		adjMatrix[start][end] = 1;
 		adjMatrix[end][start] = 1;
+	}
+	
+	public void addEdge(int start, int end,int weight) {
+		adjMatrix[start][end] = weight;
+		adjMatrix[end][start] = weight;
+	}
+	
+	public void minimumSpanningTree(){
+		int currentVert = 0;
+		int nTree = 0;
+		while(nTree<nVerts-1){
+			vertixList[currentVert].setInTree(true);
+			nTree++;
+			for (int j = 0; j < nVerts; j++) {
+				if(currentVert==j){
+					continue;
+				}
+				if(vertixList[j].isInTree){
+					continue;
+				}
+				int distance = adjMatrix[currentVert][j];
+				if(distance==INFINITY){
+					continue;
+				}
+				putInQueue(j,distance,currentVert);
+				if(pq.size()==0){
+					System.out.println("Graph not connected");
+					return;
+				}
+				Edge edge = pq.removeMin();
+				int source = edge.getSrcVert();
+				currentVert = edge.getDestVert();
+				
+				System.out.print(vertixList[source].getLabel());
+				System.out.print(vertixList[currentVert].getLabel());
+				System.out.println(" ");
+			}
+		}
+	}
+	
+	private void putInQueue(int vert, int distance,int currentVert) {
+		int queueIndex = pq.find(vert);
+		if(queueIndex!=-1){
+			Edge tempeEdge = pq.peekN(queueIndex);
+			int oldDistance = tempeEdge.getDistance();
+			if(oldDistance>distance){
+				pq.removeN(queueIndex);
+				pq.insert(new Edge(currentVert, vert, distance));
+			}
+		}else{
+			pq.insert(new Edge(currentVert, vert, distance));
+		}
 	}
 
 	// depth first search
