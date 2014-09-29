@@ -2,9 +2,9 @@ package com.shulga.algorithms.collections.adt;
 
 public interface Queue<T> {
 
-	boolean isEmpty();
+    boolean isEmpty();
 
-	void enqueue(T data);
+    void enqueue(T data);
 
-	T dequeue();
+    T dequeue();
 }

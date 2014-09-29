@@ -1,0 +1,51 @@
+package com.shulga.interview.arrays;
+
+/**
+ * Created by ievgen on 9/29/2014.
+ */
+public class BinarySearch {
+
+    public int binarySearch(int item, int[] ar) {
+        int high = ar.length - 1;
+        int low = 0;
+        while (high >= low) {
+            int mid = low + (high - low) / 2;
+            if (item == ar[mid]) {
+                return mid;
+            } else if (item < ar[mid]) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+    public int binarySearchRecursively(int item, int[] ar) {
+        return binarySearchInner(item, ar, 0, ar.length - 1);
+    }
+
+    private int binarySearchInner(int item, int[] ar, int low, int high) {
+        int mid = (low + high) / 2;
+        if (low > high) {
+            return -1;
+        } else {
+            if (item == ar[mid]) {
+                return mid;
+            } else if (item < ar[mid]) {
+                return binarySearchInner(item, ar, low, mid - 1);
+            } else {
+                return binarySearchInner(item, ar, mid + 1, high);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] ar = {1, 3, 4, 5, 77, 99, 111, 122};
+        System.out.println(new BinarySearch().binarySearch(77, ar)); //4
+        System.out.println(new BinarySearch().binarySearch(73, ar)); //-1
+
+        System.out.println(new BinarySearch().binarySearchRecursively(77, ar)); //4
+        System.out.println(new BinarySearch().binarySearchRecursively(73, ar)); //-1
+    }
+}
