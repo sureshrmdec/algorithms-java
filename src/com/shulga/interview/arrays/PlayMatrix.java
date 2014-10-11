@@ -22,8 +22,8 @@ public class PlayMatrix {
         }
         for (int i = 0; i < columnLength; i++) {
             for (int j = 0; j < rowLength; j++) {
-                if(rows[j]==1 || columns[i]==1){
-                    matrix[i][j]=0;
+                if (rows[j] == 1 || columns[i] == 1) {
+                    matrix[i][j] = 0;
                 }
             }
         }

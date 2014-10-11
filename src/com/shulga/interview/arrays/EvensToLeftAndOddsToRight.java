@@ -8,6 +8,14 @@ package com.shulga.interview.arrays;
  */
 public class EvensToLeftAndOddsToRight {
 
+    public static void main(String[] args) {
+        int[] ar = {1, 3, 2, 4, 5, 6, 8, 4, 324, 67, 97, 342, 23};
+        new EvensToLeftAndOddsToRight().perform(ar);
+        for (int i = 0; i < ar.length; i++) {
+            System.out.println(ar[i]);
+        }
+    }
+
     public void perform(int[] ar) {
         int start = 0;
         int end = ar.length - 1;
@@ -28,13 +36,5 @@ public class EvensToLeftAndOddsToRight {
         int temp = ar[one];
         ar[one] = ar[two];
         ar[two] = temp;
-    }
-
-    public static void main(String[] args) {
-        int[] ar = {1, 3, 2, 4, 5, 6, 8, 4, 324, 67, 97, 342, 23};
-        new EvensToLeftAndOddsToRight().perform(ar);
-        for (int i = 0; i < ar.length; i++) {
-            System.out.println(ar[i]);
-        }
     }
 }

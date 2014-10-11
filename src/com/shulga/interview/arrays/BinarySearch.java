@@ -5,6 +5,15 @@ package com.shulga.interview.arrays;
  */
 public class BinarySearch {
 
+    public static void main(String[] args) {
+        int[] ar = {1, 3, 4, 5, 77, 99, 111, 122};
+        System.out.println(new BinarySearch().binarySearch(77, ar)); //4
+        System.out.println(new BinarySearch().binarySearch(73, ar)); //-1
+
+        System.out.println(new BinarySearch().binarySearchRecursively(77, ar)); //4
+        System.out.println(new BinarySearch().binarySearchRecursively(73, ar)); //-1
+    }
+
     public int binarySearch(int item, int[] ar) {
         int high = ar.length - 1;
         int low = 0;
@@ -38,14 +47,5 @@ public class BinarySearch {
                 return binarySearchInner(item, ar, mid + 1, high);
             }
         }
-    }
-
-    public static void main(String[] args) {
-        int[] ar = {1, 3, 4, 5, 77, 99, 111, 122};
-        System.out.println(new BinarySearch().binarySearch(77, ar)); //4
-        System.out.println(new BinarySearch().binarySearch(73, ar)); //-1
-
-        System.out.println(new BinarySearch().binarySearchRecursively(77, ar)); //4
-        System.out.println(new BinarySearch().binarySearchRecursively(73, ar)); //-1
     }
 }

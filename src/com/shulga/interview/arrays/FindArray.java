@@ -7,6 +7,12 @@ package com.shulga.interview.arrays;
  */
 public class FindArray {
 
+    public static void main(String[] args) {
+        int[] ar = {1, 5, 8, 7, 0, 5, 99};
+        int[] subArray = {8, 7, 0, 5, 99};
+        System.out.println(new FindArray().perform(subArray, ar));
+    }
+
     public int perform(int[] subarray, int[] array) {
         if (subarray.length > array.length) {
             return -1;
@@ -31,11 +37,5 @@ public class FindArray {
             }
         }
         return -1;
-    }
-
-    public static void main(String[] args) {
-        int[] ar = {1, 5, 8, 7, 0, 5, 99};
-        int[] subArray = {8, 7, 0, 5, 99};
-        System.out.println(new FindArray().perform(subArray, ar));
     }
 }

@@ -21,14 +21,14 @@ public class RotateMatrix {
             int first = layer;
             int last = width - 1 - layer;
             for (int i = first; i < last; i++) {
-                int offset = i-first;
+                int offset = i - first;
                 int top = matrix[first][i]; //save top left
                 //buttom left to top left
-                matrix[first][i] = matrix[last-offset][first];
+                matrix[first][i] = matrix[last - offset][first];
                 //right to left (buttom)
-                matrix[last-offset][first] = matrix[last][last-offset];
+                matrix[last - offset][first] = matrix[last][last - offset];
                 //right top to right buttom
-                matrix[last][last-offset] = matrix[i][last];
+                matrix[last][last - offset] = matrix[i][last];
                 //top to right top
                 matrix[i][last] = top;
             }

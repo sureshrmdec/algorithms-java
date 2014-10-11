@@ -2,7 +2,7 @@ package com.shulga.interview.string;
 
 /**
  * Write a method to decide if two strings are anagrams or not.
- *
+ * <p/>
  * Created by ievgen on 10/8/2014.
  */
 public class Anagram {
