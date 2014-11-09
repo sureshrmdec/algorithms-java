@@ -5,6 +5,8 @@ package com.shulga.interview.arrays;
  */
 public class BinarySearch {
 
+    public static final int UNORDERED_ARRAY = -1;
+
     public static void main(String[] args) {
         int[] ar = {1, 3, 4, 5, 77, 99, 111, 122};
         System.out.println(new BinarySearch().binarySearch(77, ar)); //4
@@ -35,9 +37,12 @@ public class BinarySearch {
     }
 
     private int binarySearchInner(int item, int[] ar, int low, int high) {
-        int mid = (low + high) / 2;
+        int range = high - low;
+        int mid = (range / 2) + low;
         if (low > high) {
             return -1;
+        } else if (ar[low] > ar[high]) {
+            return UNORDERED_ARRAY;
         } else {
             if (item == ar[mid]) {
                 return mid;
@@ -48,4 +53,6 @@ public class BinarySearch {
             }
         }
     }
+
+
 }

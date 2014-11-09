@@ -5,29 +5,29 @@ package com.shulga.interview.string;
  */
 public class ReverseWords {
 
-    public  static String reverseString(String str){
+    public static String reverseString(String str) {
         char[] chars = str.toCharArray();
         int begin = 0;
-        int end = chars.length-1;
+        int end = chars.length - 1;
 
-        while(begin<end){
-            swap(begin++,end--,chars);
+        while (begin < end) {
+            swap(begin++, end--, chars);
         }
         return new String(chars);
     }
 
     //TODO finish
-    public  static String reverseWords(String str){
+    public static String reverseWords(String str) {
         char[] chars = str.toCharArray();
         int begin = 0;
         int end = 0;
         int length = str.length();
         String reversed = reverseString(str);
 
-        while(end< length){
-            if(chars[end]!= ' '){
+        while (end < length) {
+            if (chars[end] != ' ') {
                 begin = end;
-                while(end<length && chars[end]!=' '){
+                while (end < length && chars[end] != ' ') {
                     end++;
                 }
             }
@@ -38,7 +38,7 @@ public class ReverseWords {
     private static void swapString(int begin, int end, String[] split) {
         String tmp = split[begin];
         split[begin] = split[end];
-        split[end] =  tmp;
+        split[end] = tmp;
     }
 
     private static void swap(int begin, int end, char[] chars) {

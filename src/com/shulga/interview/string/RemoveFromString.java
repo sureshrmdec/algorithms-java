@@ -1,9 +1,8 @@
 package com.shulga.interview.string;
 
 /**
- *
  * remove("hello world", "ld") ====> heo wor
- *
+ * <p/>
  * Created by eshulga on 11/7/14.
  */
 public class RemoveFromString {
@@ -25,7 +24,7 @@ public class RemoveFromString {
             }
             src++;
         }
-        return new String(strAr,0,dst);
+        return new String(strAr, 0, dst);
     }
 
     public static void main(String[] args) {
