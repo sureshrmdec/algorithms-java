@@ -2,6 +2,7 @@ package com.shulga.algorithms.tree.bst.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class BSTSimpleImpl {
     private BSTTreeNode rootNode = null;
@@ -119,6 +120,42 @@ public class BSTSimpleImpl {
             traversePostOrder(node.getRight(), traversedNodesList);
             traversedNodesList.add(node.getData());
         }
+    }
+
+    private void traversePreOrderNonRec(BSTTreeNode root, List<BSTTreeNode> traversedNodesList) {
+        Stack<BSTTreeNode> callStack = new Stack<BSTTreeNode>();
+        callStack.add(root);
+        while (true) {
+            BSTTreeNode node = callStack.pop();
+            if (node == null) {
+                break;
+            }
+            traversedNodesList.add(node);
+            BSTTreeNode right = root.getRight();
+            if (right != null) {
+                callStack.add(right);
+            }
+            BSTTreeNode left = root.getLeft();
+            if (left != null) {
+                callStack.add(left);
+            }
+        }
+    }
+
+    private BSTTreeNode findCommonAncestor(BSTTreeNode one, BSTTreeNode two) {
+        BSTTreeNode current = one;
+        while (rootNode != null) {
+            if (rootNode.getData() > one.getData() && rootNode.getData() > two.getData()) {
+                rootNode = rootNode.getLeft();
+            } else if (rootNode.getData() < one.getData() && rootNode.getData() < two.getData()) {
+                rootNode.getRight();
+            } else if (rootNode.getData() == one.getData() || rootNode.getData() == one.getData()) {
+                return rootNode;
+            } else {
+                return rootNode;
+            }
+        }
+        return null;
     }
 
     private void traversePreOrder(BSTTreeNode node, List<Number> traversedNodesList) {
@@ -241,6 +278,19 @@ public class BSTSimpleImpl {
             }
         }
         return current;
+    }
+
+    public BSTTreeNode findRec(Number data, BSTTreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        if (root.getData().longValue() == data.longValue()) {
+            return root;
+        } else if (root.getData().longValue() < data.longValue()) {
+            return findRec(data, root.getRight());
+        } else {
+            return findRec(data, root.getLeft());
+        }
     }
 
     public static void main(String[] args) {
