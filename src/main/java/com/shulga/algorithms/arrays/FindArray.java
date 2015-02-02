@@ -3,6 +3,8 @@ package com.shulga.algorithms.arrays;
 /**
  * Find subarray in array. Return start index.
  * <p/>
+ *
+ * M * O(N)
  * Created by ievgen on 9/29/2014.
  */
 public class FindArray {

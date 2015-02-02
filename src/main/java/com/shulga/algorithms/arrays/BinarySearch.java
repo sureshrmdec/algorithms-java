@@ -1,6 +1,9 @@
 package com.shulga.algorithms.arrays;
 
 /**
+ * Binary search
+ * O(logN)
+ *
  * Created by ievgen on 9/29/2014.
  */
 public class BinarySearch {
