@@ -6,8 +6,19 @@ import java.util.Iterator;
  * Created by ievgen on 10/6/2014.
  */
 public class LinkedQueue<Item> implements Iterable {
-    private Node first;
+    Node first;
     private Node last;
+
+    public static void main(String[] args) {
+        LinkedQueue<Integer> q = new LinkedQueue<>();
+        q.enqueue(1);
+        q.enqueue(7);
+        q.enqueue(5);
+        q.enqueue(2);
+        q.enqueue(9);
+        q.enqueue(0);
+        System.out.println(q.max(q.first,0));
+    }
 
     public void enqueue(Item item) {
         Node oldLast = last;
@@ -28,6 +39,12 @@ public class LinkedQueue<Item> implements Iterable {
             last = null;
         }
         return temp;
+    }
+
+    public int max(Node node,int max){
+        if(node==null) return max;
+        if(Integer.valueOf(node.value.toString())>max) return max(node.next,Integer.valueOf(node.value.toString()));
+        else return max(node.next,max);
     }
 
     @Override
@@ -60,7 +77,7 @@ public class LinkedQueue<Item> implements Iterable {
         }
     }
 
-    private class Node {
+    class Node {
         Node next;
         Item value;
     }

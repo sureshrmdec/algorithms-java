@@ -10,7 +10,7 @@ import java.util.*;
 public class FindNFrequentNumbers {
 
     static List<Map.Entry<Integer,Integer>> getNFrequentNumbers(List<Integer> numbers, int k) {
-        Map<Integer, Integer> tempMap = new HashMap<>();
+        Map<Integer, Integer> tempMap = new HashMap<Integer,Integer>();
         for (Integer num : numbers) {
             Integer value = tempMap.get(num);
             if (value != null) {
