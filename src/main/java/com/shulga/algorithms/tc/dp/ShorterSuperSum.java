@@ -10,29 +10,17 @@ package com.shulga.algorithms.tc.dp;
 public class ShorterSuperSum {
 
     int calculate(int k, int n) {
-        int res = 0;
-        return calcReq(k-1, n, res);
-    }
-
-    int calcReq(int k, int n, int res) {
-        if (k == 0) {
-            return sum(n);
+        int sum=0;
+        if(k==0) {
+            return n;
         }
         for (int i = 1; i <= n; i++) {
-            res+=calcReq(k-1,i,res);
-        }
-        return res;
-    }
-
-    private int sum(int n) {
-        int sum = 0;
-        for (int i = 1; i <= n; i++) {
-            sum+=i;
+            sum+=calculate(k-1,i);
         }
         return sum;
     }
 
     public static void main(String[] args) {
-        System.out.println(new ShorterSuperSum().calculate(4, 10));
+        System.out.println(new ShorterSuperSum().calculate(4,10));
     }
 }
