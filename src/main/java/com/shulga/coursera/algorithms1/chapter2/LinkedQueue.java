@@ -17,7 +17,7 @@ public class LinkedQueue<Item> implements Iterable {
         q.enqueue(2);
         q.enqueue(9);
         q.enqueue(0);
-        System.out.println(q.max(q.first,0));
+        System.out.println(q.max(q.first, 0));
     }
 
     public void enqueue(Item item) {
@@ -41,10 +41,10 @@ public class LinkedQueue<Item> implements Iterable {
         return temp;
     }
 
-    public int max(Node node,int max){
-        if(node==null) return max;
-        if(Integer.valueOf(node.value.toString())>max) return max(node.next,Integer.valueOf(node.value.toString()));
-        else return max(node.next,max);
+    public int max(Node node, int max) {
+        if (node == null) return max;
+        if (Integer.valueOf(node.value.toString()) > max) return max(node.next, Integer.valueOf(node.value.toString()));
+        else return max(node.next, max);
     }
 
     @Override

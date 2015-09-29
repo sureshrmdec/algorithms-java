@@ -5,12 +5,12 @@ package com.shulga.algorithms.tc;
  */
 public class DevuAndGame {
 
-    String canWin(int[] nextLevel){
+    String canWin(int[] nextLevel) {
         int count = 0;
-        int position=0;
-        while(count<nextLevel.length){
+        int position = 0;
+        while (count < nextLevel.length) {
             position = nextLevel[position];
-            if(position==-1){
+            if (position == -1) {
                 return "Win";
             }
             count++;

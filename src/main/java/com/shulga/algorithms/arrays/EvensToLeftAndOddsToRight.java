@@ -3,9 +3,9 @@ package com.shulga.algorithms.arrays;
 /**
  * Given N elements array, move all evens to left and all odds to right.
  * Do not use extra array.
- * <p/>
+ * <p>
  * O(N) time complexity
- *
+ * <p>
  * Created by ievgen on 9/29/2014.
  */
 public class EvensToLeftAndOddsToRight {

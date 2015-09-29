@@ -2,7 +2,7 @@ package com.shulga.algorithms.string;
 
 /**
  * GetLongestConsecutiveChar
- * <p/>
+ * <p>
  * Created by ievgen on 2/1/2015.
  */
 public class LongestConsecutiveChar {

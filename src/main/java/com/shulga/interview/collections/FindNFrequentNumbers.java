@@ -9,8 +9,8 @@ import java.util.*;
  */
 public class FindNFrequentNumbers {
 
-    static List<Map.Entry<Integer,Integer>> getNFrequentNumbers(List<Integer> numbers, int k) {
-        Map<Integer, Integer> tempMap = new HashMap<Integer,Integer>();
+    static List<Map.Entry<Integer, Integer>> getNFrequentNumbers(List<Integer> numbers, int k) {
+        Map<Integer, Integer> tempMap = new HashMap<Integer, Integer>();
         for (Integer num : numbers) {
             Integer value = tempMap.get(num);
             if (value != null) {
@@ -26,7 +26,7 @@ public class FindNFrequentNumbers {
                 return o2.getValue().compareTo(o1.getValue());
             }
         });
-        List<Map.Entry<Integer,Integer>> result = new ArrayList<>();
+        List<Map.Entry<Integer, Integer>> result = new ArrayList<>();
         for (int i = 0; i < k && i < numbers.size(); i++) {
             result.add(tempList.get(i));
         }
@@ -39,8 +39,8 @@ public class FindNFrequentNumbers {
             list.add(Math.abs(new Random().nextInt() % 10));
         }
         List<Map.Entry<Integer, Integer>> nFrequentNumbers = getNFrequentNumbers(list, 3);
-        for (Map.Entry<Integer, Integer> entry: nFrequentNumbers) {
-            System.out.println(entry.getKey() +" : "+entry.getValue());
+        for (Map.Entry<Integer, Integer> entry : nFrequentNumbers) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
         }
     }
 }

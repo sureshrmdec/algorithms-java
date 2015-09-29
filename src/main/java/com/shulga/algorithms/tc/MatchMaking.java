@@ -55,7 +55,7 @@ public class MatchMaking {
 //        String queryWoman= "Constance";
 //        String result= "Duff";
 
-        String[] namesWomen={"F", "M", "S", "h", "q", "g", "r", "N", "U", "x", "H", "P",
+        String[] namesWomen = {"F", "M", "S", "h", "q", "g", "r", "N", "U", "x", "H", "P",
                 "o", "E", "R", "z", "L", "m", "e", "u", "K", "A", "w", "Q",
                 "O", "v", "j", "a", "t", "p", "C", "G", "k", "c", "V", "B",
                 "D", "s", "n", "i", "f", "T", "I", "l", "d", "J", "y", "b"};
@@ -87,12 +87,11 @@ public class MatchMaking {
                 "aaabaabb", "bbaaabaa", "baaaaabb", "bbaabaab", "bbababab",
                 "aabaaaab", "aaaaabab", "aabbaaba"};
 
-        String queryWoman= "U";
+        String queryWoman = "U";
 
-        String result= "x";
+        String result = "x";
 
-        System.out.println(makeMatch(namesWomen,answersWomen,namesMen,answersMen,queryWoman));
-
+        System.out.println(makeMatch(namesWomen, answersWomen, namesMen, answersMen, queryWoman));
 
 
     }

@@ -11,8 +11,8 @@ public class UserName {
         Arrays.sort(existingNames);
         String suggestion = newName;
         int counter = 1;
-        while(Arrays.binarySearch(existingNames,suggestion)>=0){
-            suggestion = newName+counter++;
+        while (Arrays.binarySearch(existingNames, suggestion) >= 0) {
+            suggestion = newName + counter++;
         }
         return suggestion;
     }
@@ -25,8 +25,8 @@ public class UserName {
         String[] existingNames = {"Bart4", "Bart5", "Bart6", "Bart7", "Bart8", "Bart9", "Bart10",
                 "Lisa", "Marge", "Homer", "Bart", "Bart1", "Bart2", "Bart3",
                 "Bart11", "Bart12"};
-        String name="Bart";
-        System.out.println(newMember(existingNames,name));
+        String name = "Bart";
+        System.out.println(newMember(existingNames, name));
     }
 
 }

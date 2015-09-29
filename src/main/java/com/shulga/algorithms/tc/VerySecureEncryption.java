@@ -5,13 +5,13 @@ package com.shulga.algorithms.tc;
  */
 public class VerySecureEncryption {
 
-    String encrypt(String message, int[] key, int K){
+    String encrypt(String message, int[] key, int K) {
         int n = message.length();
         char[] res = new char[n];
         for (int i = 0; i < K; i++) {
             char[] chars = message.toCharArray();
             for (int j = 0; j < n; j++) {
-               res[key[j]] = chars[j];
+                res[key[j]] = chars[j];
             }
             message = new String(res);
         }
@@ -20,6 +20,6 @@ public class VerySecureEncryption {
 
     public static void main(String[] args) {
         int[] key = {4, 3, 6, 2, 5, 1, 0, 7};
-        System.out.println(new VerySecureEncryption().encrypt("uogcodlk",key,44));
+        System.out.println(new VerySecureEncryption().encrypt("uogcodlk", key, 44));
     }
 }

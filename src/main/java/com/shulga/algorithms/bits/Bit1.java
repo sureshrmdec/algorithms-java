@@ -7,9 +7,9 @@ package com.shulga.algorithms.bits;
  * EXAMPLE:
  * Input: N = 10000000000, M = 10101, i = 2, j = 6
  * Output: N = 10001010100
- * <p/>
- * <p/>
- * <p/>
+ * <p>
+ * <p>
+ * <p>
  * Created by ievgen on 11/8/14.
  */
 public class Bit1 {

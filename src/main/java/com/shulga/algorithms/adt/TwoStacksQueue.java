@@ -5,7 +5,7 @@ import com.shulga.algorithms.collections.adt.StackArray;
 
 /**
  * Implement a MyQueue class which implements a queue using two stacks.
- * <p/>
+ * <p>
  * Created by ievgen on 10/11/2014.
  */
 public class TwoStacksQueue {

@@ -5,7 +5,7 @@ package com.shulga.algorithms.collections;
  * EXAMPLE
  * Input: (3 -> 1 -> 5), (5 -> 9 -> 2)
  * Output: 8 -> 0 -> 8
- * <p/>
+ * <p>
  * Created by ievgen on 10/10/2014.
  */
 public class LinkedListAdd {

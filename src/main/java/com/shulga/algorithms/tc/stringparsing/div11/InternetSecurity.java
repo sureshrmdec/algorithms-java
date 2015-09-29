@@ -21,7 +21,7 @@ public class InternetSecurity {
                     counter++;
                 }
                 if (counter == threshold) {
-                    addToDangerous(siteKeywords,dangerousSet);
+                    addToDangerous(siteKeywords, dangerousSet);
                     result.add(address[i]);
                     break;
                 }
@@ -40,9 +40,9 @@ public class InternetSecurity {
     public static void main(String[] args) {
 
 
-        String[] address =  {"a..a.ab.","...aa.b"};
-        String[] keyword =  {"a bc def","def ghij klmno"};
-        String[] dangerous = {"a","b","c","d","e"};
+        String[] address = {"a..a.ab.", "...aa.b"};
+        String[] keyword = {"a bc def", "def ghij klmno"};
+        String[] dangerous = {"a", "b", "c", "d", "e"};
         int threshold = 1;
         String[] website = new InternetSecurity().determineWebsite(address, keyword, dangerous, threshold);
         for (int i = 0; i < website.length; i++) {

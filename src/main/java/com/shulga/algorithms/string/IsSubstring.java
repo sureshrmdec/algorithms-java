@@ -2,7 +2,7 @@ package com.shulga.algorithms.string;
 
 /**
  * Given two strings, s1 and s2, write code to check if s2 is a rotation of s (i.e., “waterbottle” is a rotation of “erbottlewat”).
- * <p/>
+ * <p>
  * Created by ievgen on 10/9/2014.
  */
 public class IsSubstring {

@@ -2,7 +2,7 @@ import com.shulga.coursera.algorithms1.chapter2.ArrayStack;
 
 /**
  * Created by ievgen on 10/7/2014.
- * <p/>
+ * <p>
  * Run: echo ( 1 + ( ( 3 * 5 ) * ( 3 + 1 ) ) ) | java -cp stdlib.jar;chapter2/ArrayStack.java;. Evaluate
  */
 public class Evaluate {

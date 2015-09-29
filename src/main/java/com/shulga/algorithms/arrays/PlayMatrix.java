@@ -2,7 +2,7 @@ package com.shulga.algorithms.arrays;
 
 /**
  * If an element in an MxN matrix is 0, its entire row and column is set to 0
- * <p/>
+ * <p>
  * Created by ievgen on 10/9/2014.
  */
 public class PlayMatrix {

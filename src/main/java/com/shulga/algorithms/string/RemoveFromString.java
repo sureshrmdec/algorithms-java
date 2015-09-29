@@ -2,7 +2,7 @@ package com.shulga.algorithms.string;
 
 /**
  * remove("hello world", "ld") ====> heo wor
- * <p/>
+ * <p>
  * Created by eshulga on 11/7/14.
  */
 public class RemoveFromString {

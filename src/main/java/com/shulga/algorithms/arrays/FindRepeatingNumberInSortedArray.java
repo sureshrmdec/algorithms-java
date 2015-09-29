@@ -3,7 +3,7 @@ package com.shulga.algorithms.arrays;
 /**
  * Given a sorted array, there is only one value K has multiple occurrence, find
  * the repeating element and its first occurrence.
- * <p/>
+ * <p>
  * Created by ievgen on 9/29/2014.
  */
 public class FindRepeatingNumberInSortedArray {

@@ -2,14 +2,14 @@ package com.shulga.algorithms.arrays;
 
 /**
  * The task of finding the contiguous subarray which has the largest sum.
- *
- *
+ * <p>
+ * <p>
  * 1. Maintain two variables: maxSoFar and maxEndingAtCurrentPosition in Array.
  * 2. Update maxEndingAtCurrentPosition if (maxEndingAtCurrentPosition + current[i]) > than 0.
  * 3. Keep on updating maxSoFar whenever maxEndingAtCurrentPosition is greater than maxSoFar.
- * <p/>
+ * <p>
  * http://en.wikipedia.org/wiki/Kadane%27s_Algorithm
- * <p/>
+ * <p>
  * Created by ievgen on 9/29/2014.
  */
 public class FindMaxSumSubArray {

@@ -80,22 +80,22 @@ public class Primes {
         String chars = "0123456789ABCDEFGHIJ";
         String result = "";
         while (n > 0) {
-            result = chars.charAt(n % b)+result;
+            result = chars.charAt(n % b) + result;
             n = n / b;
         }
         return result;
     }
 
-    public static int[] addFraction(int[] a,int[] b){
-        int denom = LCM(a[1],b[1]);
-        int[] res = {denom/a[1]*a[0]+denom/b[1]*b[0],denom};
+    public static int[] addFraction(int[] a, int[] b) {
+        int denom = LCM(a[1], b[1]);
+        int[] res = {denom / a[1] * a[0] + denom / b[1] * b[0], denom};
         return res;
     }
 
-    public static void reduceFraction(int[] a){
-        int gcd = GCD(a[0],a[1]);
-        a[0] = a[0]/gcd;
-        a[1] = a[1]/gcd;
+    public static void reduceFraction(int[] a) {
+        int gcd = GCD(a[0], a[1]);
+        a[0] = a[0] / gcd;
+        a[1] = a[1] / gcd;
     }
 
 }

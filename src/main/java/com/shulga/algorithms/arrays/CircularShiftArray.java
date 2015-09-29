@@ -3,7 +3,7 @@ package com.shulga.algorithms.arrays;
 /**
  * Shift array of integers circularly, given input array and shift size.
  * O(N) time and space complexity.
- * <p/>
+ * <p>
  * Created by ievgen on 9/29/2014.
  */
 public class CircularShiftArray {
