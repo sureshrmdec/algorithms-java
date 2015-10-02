@@ -23,6 +23,10 @@ public class Bit1 {
 
         // 1’s through position j, then 0’s
 
+        System.out.println(Integer.toBinaryString(1));
+        System.out.println(Integer.toBinaryString(j));
+        System.out.println(1 << j);
+        System.out.println((1 << j) - 1);
         int left = max - ((1 << j) - 1);
         binary = Integer.toBinaryString(left);
         System.out.println(binary + " count:" + binary.length());

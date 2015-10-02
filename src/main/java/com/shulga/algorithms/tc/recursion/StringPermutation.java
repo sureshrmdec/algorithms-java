@@ -1,4 +1,4 @@
-package com.shulga.algorithms.recursion;
+package com.shulga.algorithms.tc.recursion;
 
 /**
  * Created by ievgen on 11/8/14.
