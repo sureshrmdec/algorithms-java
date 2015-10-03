@@ -1,8 +1,9 @@
 package com.shulga.algorithms.string;
 
 /**
- * Design an algorithm and write code to remove the duplicate characters in a string without using any additional buffer. NOTE: One or two additional variables are fine. An extra copy of the array is not.
- * <p>
+ * Design an algorithm and write code to remove the duplicate characters in a string without using any additional buffer.
+ * NOTE: One or two additional variables are fine. An extra copy of the array is not.
+ * <p/>
  * Created by ievgen on 10/8/2014.
  */
 public class RemoveDuplicatesInString {
@@ -27,8 +28,8 @@ public class RemoveDuplicatesInString {
                 chars[tail++] = chars[i];
             }
         }
-        while (tail < length - 1) {
-            chars[++tail] = 0;
+        if (tail < length - 1) {
+            chars[tail] = 0;
         }
         return new String(chars);
     }
@@ -50,7 +51,7 @@ public class RemoveDuplicatesInString {
                 hit[chars[i]] = true;
             }
         }
-        while (tail < length - 1) {
+        if (tail < length - 1) {
             chars[++tail] = 0;
         }
         return new String(chars);
