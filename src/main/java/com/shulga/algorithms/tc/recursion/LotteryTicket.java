@@ -5,7 +5,7 @@ package com.shulga.algorithms.tc.recursion;
  */
 public class LotteryTicket {
     String buy(int price, int b1, int b2, int b3, int b4){
-
+        return "";
     }
 
     public static void main(String[] args) {
