@@ -52,7 +52,9 @@ public class HeapMaxPriority {
             if (j < N && less(j, j + 1)) {
                 j++;
             }
-            if (less(j, top)) return;
+            if (less(j, top)) {
+                return;
+            }
             exch(top, j);
             top = j;
         }
@@ -61,10 +63,10 @@ public class HeapMaxPriority {
     public static void main(String[] args) {
         HeapMaxPriority h = new HeapMaxPriority();
         h.insert(2);
+        h.insert(555);
+        h.insert(8);
         h.insert(5);
         h.insert(8);
-        h.insert(8);
-        h.insert(555);
         h.insert(1);
         h.insert(23);
         System.out.println(h.delMax());

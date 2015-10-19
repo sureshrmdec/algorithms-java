@@ -1,7 +1,7 @@
 package com.shulga.algorithms.string;
 
 /**
- * GetLongestConsecutiveChar
+ * Find the longest consecutive char in string. Do not use extra space.
  * <p>
  * Created by ievgen on 2/1/2015.
  */
@@ -52,6 +52,7 @@ public class LongestConsecutiveChar {
     }
 
     public static void main(String[] args) {
-        System.out.println(getLongestConsecutiveChar("hee"));
+        System.out.println(getLongestConsecutiveChar("aasss"));
+        System.out.println(getLongestConsecutiveCharExtraSpace("aasss"));
     }
 }

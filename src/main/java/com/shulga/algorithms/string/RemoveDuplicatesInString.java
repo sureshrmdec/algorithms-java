@@ -58,7 +58,7 @@ public class RemoveDuplicatesInString {
     }
 
     public static void main(String[] args) {
-        System.out.println(removeDuplicates("hhedddlo"));
-        System.out.println(removeDuplicatesNoExtraSpace("hhedddlo"));
+        System.out.println(removeDuplicates("heello"));
+        System.out.println(removeDuplicatesNoExtraSpace("heello"));
     }
 }
