@@ -49,7 +49,35 @@ public class Test1 {
 
     }
 
+    int fib(int N,int[] dp){
+        if(N<=1) return 1;
+        int lookup = dp[N];
+        if(lookup!=-1){
+            return lookup;
+        }
+        dp[N] = fib(N-1,dp)+fib(N-2,dp);
+        return dp[N];
+    }
+
+    int fib(int n){
+        int one = 1;
+        int two = 2;
+        for (int i = 3; i <= n; i++) {
+            int temp = one+two;
+            one = two;
+            two=temp;
+        }
+        return two;
+    }
+
     public static void main(String[] args) {
         System.out.println(new Test1().getMinStepsMemorization(6));
+
+        int[] ar =new int[5+1];
+        for (int i = 0; i <= 5; i++) {
+            ar[i] = -1;
+        }
+        System.out.println(new Test1().fib(5,ar));
+        System.out.println(new Test1().fib(5));
     }
 }
