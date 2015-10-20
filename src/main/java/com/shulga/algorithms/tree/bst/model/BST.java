@@ -1,5 +1,8 @@
 package com.shulga.algorithms.tree.bst.model;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Created by eugene on 10/18/15.
  */
@@ -79,7 +82,7 @@ public class BST<K extends Comparable,V> {
     }
 
     public V floor(K key){
-        BSTNode res = floorReq(key,root);
+        BSTNode res = floorReq(key, root);
         if(res==null){
             return null;
         }
@@ -102,6 +105,35 @@ public class BST<K extends Comparable,V> {
         }
     }
 
+    public void delete(K key){
+        root = deleteReq(key,root);
+    }
+
+    private BSTNode deleteReq(K key, BSTNode node) {
+        if(node==null){
+            return null;
+        }
+        int cmp = key.compareTo(node.key);
+        if(cmp<0){
+            return deleteReq(key, node.left);
+        }else if(cmp>0){
+            return deleteReq(key, node.right);
+        }else{
+            if(node.left==null){
+                return node.right;
+            }
+            if(node.right==null){
+                return node.left;
+            }
+            BSTNode temp = node;
+            node = minReq(node.right);
+//            node.right = deleteMin(node.right);
+            node.left = temp.left;
+        }
+        node.size = 1+size(node.left) +size(node.right);
+        return node;
+    }
+
     public int rank(K key){
         return rankReq(key,root);
     }
@@ -110,12 +142,27 @@ public class BST<K extends Comparable,V> {
         if(node==null) return 0;
         int cmp = key.compareTo(node.key);
         if(cmp<0){
-            return rankReq(key,node.left);
+            return rankReq(key, node.left);
         }else if(cmp>0){
             return size(node.left)+1+rankReq(key,node.right);
         }else{
             return size(node.left);
         }
+    }
+
+    public Iterable<K> keys (K lo,K hi){
+        Queue<K> queue = new LinkedList<>();
+        keysReq(root,queue,lo,hi);
+        return queue;
+    }
+
+    private void keysReq(BSTNode x, Queue<K> queue, K lo, K hi) {
+        if (x == null) return;
+        int cmplo = lo.compareTo(x.key);
+        int cmphi = hi.compareTo(x.key);
+        if (cmplo < 0) keysReq(x.left, queue, lo, hi);
+        if (cmplo <= 0 && cmphi >= 0) queue.add(x.key);
+        if (cmphi > 0) keysReq(x.right, queue, lo, hi);
     }
 
     private BSTNode floorReq(K key,BSTNode node){
