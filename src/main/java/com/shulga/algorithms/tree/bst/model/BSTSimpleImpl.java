@@ -170,7 +170,8 @@ public class BSTSimpleImpl {
         List<Number> traversedNodesList = traverseTree(traverseType);
         StringBuilder traversedNodesBuilder = new StringBuilder();
         for (Number integer : traversedNodesList) {
-            traversedNodesBuilder.append(integer.toString());
+//            traversedNodesBuilder.append(integer.toString());
+            System.out.println(integer.toString());
         }
         return traversedNodesBuilder;
     }
@@ -265,6 +266,8 @@ public class BSTSimpleImpl {
         return successor;
     }
 
+
+
     public BSTTreeNode find(Number data) {
         BSTTreeNode current = rootNode;
         while (current.getData() != data.longValue()) {
@@ -295,12 +298,16 @@ public class BSTSimpleImpl {
 
     public static void main(String[] args) {
         BSTSimpleImpl bst = new BSTSimpleImpl();
+        bst.insertNode(10);
         bst.insertNode(5);
-        bst.insertNode(4);
+        bst.insertNode(20);
         bst.insertNode(3);
         bst.insertNode(7);
-        bst.insertNode(8);
         bst.insertNode(6);
+        bst.insertNode(15);
+        bst.insertNode(25);
+        bst.insertNode(23);
+        bst.insertNode(27);
         System.out.println(bst.traverseTreeInString(TraverseType.POSTORDER));
 
 
