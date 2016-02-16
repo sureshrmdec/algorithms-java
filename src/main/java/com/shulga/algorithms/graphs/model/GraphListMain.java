@@ -1,5 +1,9 @@
 package com.shulga.algorithms.graphs.model;
 
+import com.shulga.algorithms.graph.algorithms.BreadthFirstPath;
+import com.shulga.algorithms.graph.algorithms.ConnectionPath;
+import com.shulga.algorithms.graph.algorithms.DepthFirstPath;
+
 public class GraphListMain {
     public static void main(String[] args) {
         Graph g = new GraphList(10);

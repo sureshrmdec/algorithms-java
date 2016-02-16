@@ -36,6 +36,7 @@ public class BST<K extends Comparable,V> {
     public void put(K key, V value){
         root = putReq(key,value,root);
     }
+
     private BSTNode putReq(K key,V value,BSTNode node){
         if(node==null){
             return new BSTNode(key,value,1);
@@ -87,6 +88,23 @@ public class BST<K extends Comparable,V> {
             return null;
         }
         return res.value;
+    }
+
+    private BSTNode floorReq(K key,BSTNode node){
+        if(node==null) return null;
+        int cmp = key.compareTo(node.key);
+        if(cmp==0){
+            return node;
+        }
+        if(cmp<0){
+            return floorReq(key,node.left);
+        }
+        BSTNode t = floorReq(key,node.right);
+        if(t!=null){
+            return t;
+        }else{
+            return node;
+        }
     }
 
     public K select(int k){
@@ -165,22 +183,7 @@ public class BST<K extends Comparable,V> {
         if (cmphi > 0) keysReq(x.right, queue, lo, hi);
     }
 
-    private BSTNode floorReq(K key,BSTNode node){
-        if(node==null) return null;
-        int cmp = key.compareTo(node.key);
-        if(cmp==0){
-            return node;
-        }
-        if(cmp<0){
-            return floorReq(key,node.left);
-        }
-        BSTNode t = floorReq(key,node.right);
-        if(t!=null){
-            return t;
-        }else{
-            return node;
-        }
-    }
+
 
     public V find(K key){
         return findReq(key,root);

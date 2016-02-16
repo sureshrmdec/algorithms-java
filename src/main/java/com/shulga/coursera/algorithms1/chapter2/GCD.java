@@ -9,7 +9,17 @@ public class GCD {
         return gcd(q, p % q);
     }
 
+    static int gcd2(int p, int q) {
+        while (q != 0) {
+            int temp = q;
+            q = p % q;
+            p = temp;
+        }
+        return p;
+    }
+
     public static void main(String[] args) {
-        System.out.println(gcd(4, 2));
+        System.out.println(gcd(24, 56));
+        System.out.println(gcd2(24, 56));
     }
 }
