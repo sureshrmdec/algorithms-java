@@ -11,6 +11,17 @@ package com.shulga.algorithms.tc.dp;
  */
 public class Test1 {
 
+    public static void main(String[] args) {
+        System.out.println(new Test1().getMinStepsMemorization2(6));
+
+        int[] ar = new int[5 + 1];
+        for (int i = 0; i <= 5; i++) {
+            ar[i] = -1;
+        }
+        System.out.println(new Test1().fib(5, ar));
+        System.out.println(new Test1().fib(4, ar));
+    }
+
     int getMinStepsDP(int n) {
         int[] dp = new int[n + 1];
         dp[1] = 0;
@@ -49,35 +60,51 @@ public class Test1 {
 
     }
 
-    int fib(int N,int[] dp){
-        if(N<=1) return 1;
+    int fib(int N, int[] dp) {
+        if (N <= 1) return 1;
         int lookup = dp[N];
-        if(lookup!=-1){
+        if (lookup != -1) {
             return lookup;
         }
-        dp[N] = fib(N-1,dp)+fib(N-2,dp);
+        dp[N] = fib(N - 1, dp) + fib(N - 2, dp);
         return dp[N];
     }
 
-    int fib(int n){
+    int fib(int n) {
         int one = 1;
         int two = 2;
         for (int i = 3; i <= n; i++) {
-            int temp = one+two;
+            int temp = one + two;
             one = two;
-            two=temp;
+            two = temp;
         }
         return two;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new Test1().getMinStepsMemorization(6));
-
-        int[] ar =new int[5+1];
-        for (int i = 0; i <= 5; i++) {
-            ar[i] = -1;
+    public int getMinStepsMemorization2(int num) {
+        int[] memo = new int[num + 1];
+        for (int i = 0; i < memo.length; i++) {
+            memo[i] = -1;
         }
-        System.out.println(new Test1().fib(5,ar));
-        System.out.println(new Test1().fib(5));
+        return req(num, memo);
+    }
+
+    private int req(int num, int[] ar) {
+        if (num == 1) {
+            return 0;
+        }
+        if (ar[num] != -1) {
+            return ar[num];
+        }
+        int res;
+        if (num % 3 == 0) {
+            res = 1 + req(num / 3, ar);
+        } else if (num % 2 == 0) {
+            res = 1 + req(num / 2, ar);
+        } else {
+            res = 1 + req(num - 1, ar);
+        }
+        ar[num] = res;
+        return res;
     }
 }
