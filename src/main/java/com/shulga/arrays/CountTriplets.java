@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 /**
  * Count triplets with sum smaller than a given value
+ * 5 2
+ 1 5 3 4 2
  */
 public class CountTriplets {
     public static void main(String[] args) {
