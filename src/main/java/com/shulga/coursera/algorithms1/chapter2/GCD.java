@@ -6,20 +6,26 @@ package com.shulga.coursera.algorithms1.chapter2;
 public class GCD {
     static int gcd(int p, int q) {
         if (q == 0) return p;
-        return gcd(q, p % q);
+        int q1 = p % q;
+        return gcd(q, q1);
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println(gcd(8, 25));
+        System.out.println(LCM(8, 25));
     }
 
     static int gcd2(int p, int q) {
         while (q != 0) {
-            int temp = q;
-            q = p % q;
-            p = temp;
+            int res = p % q;
+            p = q;
+            q = res;
         }
         return p;
     }
 
-    public static void main(String[] args) {
-        System.out.println(gcd(24, 56));
-        System.out.println(gcd2(24, 56));
+    static int LCM(int a,int b){
+        return (a*b)/gcd(a,b);
     }
 }

@@ -6,7 +6,7 @@ package com.shulga.algorithms.algs;
 public class LargestSumContiguousSubarray {
     public static void main(String[] args) {
         System.out.println(find(new int[]{-2, -3, -4, -1, -2, 1, -5, -3}));
-        System.out.println(findHandleNegatives(new int[]{-2, -3, -4, -1, -2, -1, -5, -3}));
+        System.out.println(findHandleNegatives(new int[]{-2, -3, -4, -1, -2, -1, -5, -3,1,2}));
     }
 
     public static int find(int[] ar){

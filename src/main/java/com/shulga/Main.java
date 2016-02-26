@@ -50,7 +50,7 @@ public class Main {
         TaskA solver = new TaskA();
 //        solver.solve(new int[][]{{1,1,0,0},{0,1,1,0},{1,0,1,0},{1,1,0,0}}, in, out);
 //        solver.solve(new int[][]{{1,1,1}}, in, out);
-        solver.solve(new int[][]{{1,1}}, in, out);
+        solver.solve(new int[][]{{1,0},{0,1}}, in, out);
 //        solver.solve(new int[][]{{0,0,1,1},{0,0,1,0},{0,1,1,0},{0,1,0,0},{1,1,0,0}}, in, out);
         out.close();
     }
@@ -98,15 +98,15 @@ public class Main {
     }
 
     static class TaskA {
-        public void solve(int[][] arrr, InputReader in, PrintWriter out) {
-            int mRows=in.nextInt();
-            int nColumns=in.nextInt();
-            int[][] ar = new int[mRows][nColumns];
-            for (int i = 0; i < mRows; i++) {
-                for (int j = 0; j < nColumns; j++) {
-                    ar[i][j] = in.nextInt();
-                }
-            }
+        public void solve(int[][] ar, InputReader in, PrintWriter out) {
+            int mRows=ar.length;//in.nextInt();
+            int nColumns=ar.length;//in.nextInt();
+//            int[][] ar = new int[mRows][nColumns];
+//            for (int i = 0; i < mRows; i++) {
+//                for (int j = 0; j < nColumns; j++) {
+//                    ar[i][j] = in.nextInt();
+//                }
+//            }
             if(ar.length==0){
                 out.println(0);
                 return;
