@@ -1,7 +1,7 @@
 package com.shulga.algorithms.adt;
 
-import com.shulga.algorithms.collections.adt.Stack;
-import com.shulga.algorithms.collections.adt.StackArray;
+import com.shulga.algorithms.collections.old.adt.Stack;
+import com.shulga.algorithms.collections.old.adt.StackArray;
 
 /**
  * Implement a MyQueue class which implements a queue using two stacks.

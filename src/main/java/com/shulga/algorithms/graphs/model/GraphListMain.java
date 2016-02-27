@@ -1,8 +1,8 @@
 package com.shulga.algorithms.graphs.model;
 
-import com.shulga.algorithms.graph.algorithms.BreadthFirstPath;
-import com.shulga.algorithms.graph.algorithms.ConnectionPath;
-import com.shulga.algorithms.graph.algorithms.DepthFirstPath;
+import com.shulga.algorithms.graphs.BreadthFirstPath;
+import com.shulga.algorithms.graphs.ConnectionPath;
+import com.shulga.algorithms.graphs.DepthFirstPath;
 
 public class GraphListMain {
     public static void main(String[] args) {

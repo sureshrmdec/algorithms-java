@@ -1,6 +1,6 @@
 package com.shulga.algorithms.graphs.model;
 
-import com.shulga.coursera.algorithms1.chapter2.PriorityQ;
+import com.shulga.coursera.chapter2.PriorityQ;
 
 import java.util.LinkedList;
 import java.util.List;

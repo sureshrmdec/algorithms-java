@@ -1,4 +1,4 @@
-import com.shulga.coursera.algorithms1.chapter2.ArrayStack;
+import com.shulga.coursera.chapter2.ArrayStack;
 
 /**
  * Created by ievgen on 10/7/2014.
@@ -9,6 +9,7 @@ public class Evaluate {
     public static void main(String[] args) {
         ArrayStack<String> opd = new ArrayStack<String>();
         ArrayStack<Double> num = new ArrayStack<Double>();
+        /**
         while (!StdIn.isEmpty()) {
             String taken = StdIn.readString();
             if ("(".equals(taken) || " ".equals(taken)) {
@@ -26,6 +27,7 @@ public class Evaluate {
                 num.push(Double.parseDouble(taken));
             }
         }
+         */
         System.out.println(num.pop());
     }
 }

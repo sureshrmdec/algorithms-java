@@ -1,7 +1,7 @@
 package com.shulga.algorithms.adt;
 
-import com.shulga.algorithms.collections.adt.Stack;
-import com.shulga.algorithms.collections.adt.StackArray;
+import com.shulga.algorithms.collections.old.adt.Stack;
+import com.shulga.algorithms.collections.old.adt.StackArray;
 
 /**
  * Write a program to sort a stack in ascending order. You should not make any assumptions about how the stack is implemented.
