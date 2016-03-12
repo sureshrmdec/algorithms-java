@@ -1,33 +1,50 @@
-package com.shulga.hr;
+package com.shulga.euler;
 
 import java.io.*;
 import java.util.StringTokenizer;
 
 /**
- * Created by eshulga on 2/25/16.
- * <p>
- * Example 1: For N=4 and C={1,2,3} there are four solutions:
- * {1,1,1,1},{1,1,2},{2,2},{1,3}
+ * Created by eshulga on 3/11/16.
  */
-public class CoinChange {
+public class SummationOfPrimes {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         PrintWriter out = new PrintWriter(outputStream);
         TaskA solver = new TaskA();
-        solver.solve(new int[]{2, 1, 3}, in, out);
+        solver.primes(30);
+//        solver.solve(new int[]{-4, -1, 2, 3, 4}, in, out);
         out.close();
     }
 
     static class TaskA {
-        public void solve(int[] arr, InputReader in, PrintWriter out) {
-            int N = in.nextInt();
-            int num_coins = in.nextInt();
-            int[] coins = new int[num_coins];
-            for (int i = 0; i < num_coins; i++) {
-                coins[i] = in.nextInt();
+        public void solve(int[] ars, InputReader in, PrintWriter out) {
+            int cases = in.nextInt();
+            for (int k = 0; k < cases; k++) {
+                int num = in.nextInt();
+
             }
+        }
+
+        public int[] primes(int N){
+            boolean[] primes = new boolean[N];
+            for (int i = 0; i < primes.length; i++) {
+                primes[i] = true;
+            }
+            for (int i = 2; i < N; i++) {
+                if(primes[i]){
+                    for (int j = i+i; j < N; j+=i) {
+                        primes[j] = false;
+                    }
+                }
+            }
+            for (int i = 0; i < N; i++) {
+                if(primes[i]) {
+                    System.out.print(i+" ");
+                }
+            }
+            return new int[1];
         }
 
     }
