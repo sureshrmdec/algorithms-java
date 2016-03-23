@@ -13,11 +13,11 @@ package com.shulga.algorithms.trees;
 
  Input:  pre[] = {10, 30, 20, 5, 15},  preLN[] = {'N', 'N', 'L', 'L', 'L'}
  Output: Root of following tree
- 10
- /  \
+   10
+ /    \
  30   15
- /  \
- 20   5
+ /     \
+ 20     5
  The first element in pre[] will always be root. So we can easily figure out root. If left subtree is empty,
  the right subtree must also be empty and preLN[] entry for root must be ‘L’. We can simply create a node and return it.
  If left and right subtrees are not empty, then recursively call for left and right subtrees and link the returned nodes to root.

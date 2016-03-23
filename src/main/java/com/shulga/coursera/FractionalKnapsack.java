@@ -13,6 +13,7 @@ public class FractionalKnapsack {
 
     private Double run(Integer[] values, int[] weights, int W) {
         Map<Double, Integer> toWeights = new HashMap<>();
+
         for (int i = 0; i < values.length; i++) {
             double ratio = values[i] / new Double(weights[i]);
             toWeights.put(ratio, weights[i]);
