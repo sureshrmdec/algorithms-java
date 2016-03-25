@@ -35,6 +35,26 @@ public class LinkedListAdd {
         LinkedListNode two = new LinkedListNode();
         two.fill(2, 1);
         LinkedListNode add = add(one, two, 0);
+        LinkedListNode add2 = add2(one, two, 0);
         add.print();
+        System.out.println();
+        add2.print();
+    }
+
+    public static LinkedListNode add2(LinkedListNode<Integer> one, LinkedListNode<Integer> two, int reminder) {
+        if (one == null && two == null) {
+            return null;
+        }
+        LinkedListNode resultNumber = new LinkedListNode();
+        int res = reminder;
+        if (one != null) {
+            res += one.data;
+        }
+        if (two != null) {
+            res += two.data;
+        }
+        resultNumber.data = res % 10;
+        resultNumber.next = add2(one != null ? one.next : null, two != null ? two.next : null, res >= 10 ? 1 : 0);
+        return resultNumber;
     }
 }

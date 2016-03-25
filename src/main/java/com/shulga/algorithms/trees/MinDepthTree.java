@@ -1,30 +1,49 @@
 package com.shulga.algorithms.trees;
 
 /**
- Find Minimum Depth of a Binary Tree
- Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from root node down to the nearest leaf node.
-
- For example, minimum height of below Binary Tree is 2.
+ * Find Minimum Depth of a Binary Tree
+ * Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path
+ * from root node down to the nearest leaf node.
+ * <p>
+ * For example, minimum height of below Binary Tree is 2.
  */
 public class MinDepthTree {
 
+    public int minDepth(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+
+        if (root.left != null) {
+            return 1 + minDepth(root.left);
+        }
+        if (root.right != null) {
+            return 1 + minDepth(root.right);
+        }
+        return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
+    }
+
     public boolean isFull(Node root) {
-        if(root==null) return true;
-        if(root.left==null || root.right==null){
+        if (root == null) return true;
+        if (root.left == null || root.right == null) {
             return false;
         }
         boolean left = isFull(root.left);
-        if(left){
+        if (left) {
             return isFull(root.right);
         }
         return left;
     }
 
-    private static class Node{
-        Node(int data){
-            this.data=data;
+    private static class Node {
+        Node(int data) {
+            this.data = data;
         }
-        Node left,right;
+
+        Node left, right;
         int data;
     }
 
@@ -36,6 +55,7 @@ public class MinDepthTree {
         root.left.right = new Node(5);
         MinDepthTree l = new MinDepthTree();
         System.out.println(l.minimumDepth(root));
+        System.out.println(l.minDepth(root));
     }
 
     private int minimumDepth(Node root) {

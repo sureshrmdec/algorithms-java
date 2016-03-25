@@ -2,7 +2,8 @@ package com.shulga.algorithms.trees;
 
 /**
  Lowest Common Ancestor in a Binary Search Tree.
- Given values of two nodes in a Binary Search Tree, write a c program to find the Lowest Common Ancestor (LCA). You may assume that both the values exist in the tree.
+ Given values of two nodes in a Binary Search Tree, write a c program to find the Lowest Common Ancestor (LCA).
+ You may assume that both the values exist in the tree.
 
  The function prototype should be as follows:
 
@@ -42,4 +43,10 @@ public class LCAinBST {
         System.out.println(l.findLCA(root,8,14));
         System.out.println(l.findLCA(root,10,14));
     }
+
+
+
+
+
+
 }

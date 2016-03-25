@@ -56,4 +56,16 @@ public class SortedArrayToTree {
         root = s.sortedArrayToBST(ar,0,ar.length-1);
         preorder(root);
     }
+
+    public Node toTree(int[] ar,int start,int end){
+        if(start<end){
+            return null;
+        }
+        int mid = start+(end-start)/2;
+        Node node = new Node();
+        node.data=ar[mid];
+        node.left = toTree(ar,start,mid-1);
+        node.right = toTree(ar,mid+1,end);
+        return node;
+    }
 }
