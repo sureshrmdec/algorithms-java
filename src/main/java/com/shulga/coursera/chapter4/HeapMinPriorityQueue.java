@@ -56,6 +56,10 @@ public class HeapMinPriorityQueue {
         ar[i] = temp;
     }
 
+    public boolean isEmpty(){
+        return N==0;
+    }
+
     public static void main(String[] args) {
         HeapMinPriorityQueue h = new HeapMinPriorityQueue(20);
         h.insert(2);

@@ -69,7 +69,7 @@ public class DetectCycleGraph {
 
         DetectCycleGraph g2 = new DetectCycleGraph(3);
         g2.addEdge(0, 1);
-        g2.addEdge(1, 2);
+        g2.addEdge(1, 0);
         if (g2.isCyclic())
             System.out.println("Graph contains cycle");
         else

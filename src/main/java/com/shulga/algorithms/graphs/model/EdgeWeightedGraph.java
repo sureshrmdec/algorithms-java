@@ -31,8 +31,8 @@ public class EdgeWeightedGraph {
     public List<Edge> edges() {
         List<Edge> list = new ArrayList<>();
         for (int v = 0; v < V; v++) {
-            for (Edge e : adj(v)){
-                if(e.other(v)>0) list.add(e);
+            for (Edge e : adj(v)) {
+                if (e.other(v) > v) list.add(e);
             }
         }
         return list;
@@ -46,6 +46,6 @@ public class EdgeWeightedGraph {
     }
 
     public List<Edge> adj(int v) {
-        return adj(v);
+        return adj[v];
     }
 }
