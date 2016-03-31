@@ -1,39 +1,40 @@
 package com.shulga.algorithms.graphs.model;
 
-public class Edge {
-    private int srcVert;
-    private int destVert;
-    private int distance;
+/**
+ * Created by eugene on 3/30/16.
+ */
+public class Edge implements Comparable<Edge>{
+    private final int v;
+    private final int w;
+    private final double weight;
 
-    public Edge(int srcVert, int destVert, int distance) {
-        super();
-        this.srcVert = srcVert;
-        this.destVert = destVert;
-        this.distance = distance;
+    public Edge(int v,int w, int weight){
+        this.v=v;
+        this.w=w;
+        this.weight=weight;
     }
 
-    public int getSrcVert() {
-        return srcVert;
+    public double getWeight() {
+        return weight;
     }
 
-    public void setSrcVert(int srcVert) {
-        this.srcVert = srcVert;
+    public int either() {
+        return v;
     }
 
-    public int getDestVert() {
-        return destVert;
+    public int other(int ver) {
+        if(ver==v) return w;
+        else if(ver==w) return v;
+        return -1;
     }
 
-    public void setDestVert(int destVert) {
-        this.destVert = destVert;
+    @Override
+    public int compareTo(Edge o) {
+        if(this.getWeight()<o.getWeight()){
+            return -1;
+        }else if(this.getWeight()>o.getWeight()){
+            return 1;
+        }
+        return 0;
     }
-
-    public int getDistance() {
-        return distance;
-    }
-
-    public void setDistance(int distance) {
-        this.distance = distance;
-    }
-
 }

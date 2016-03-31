@@ -7,7 +7,7 @@ public class UF {
     private int[] tree;
     private int[] weights;
 
-    UF(int n){
+    public UF(int n){
         tree = new int[n];
         weights = new int[n];
         for (int i = 0; i < tree.length; i++) {

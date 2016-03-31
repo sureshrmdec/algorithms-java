@@ -16,7 +16,7 @@ import java.util.Stack;
  */
 public class PrimitiveCalculator {
     public static void main(String[] args) {
-        Stack<Integer> stack = new PrimitiveCalculator().run(198);
+        Stack<Integer> stack = new PrimitiveCalculator().run(14);
         System.out.println(stack.size() - 1);
         while (!stack.isEmpty()) {
             System.out.print(stack.pop() + " ");
@@ -35,6 +35,10 @@ public class PrimitiveCalculator {
             }
             dp[i] = min + 1;
         }
+        for (int i = 0; i < num; i++) {
+            System.out.print(dp[i] + " ");
+        }
+        System.out.println();
         Stack<Integer> path = new Stack<>();
         int i = num;
         path.push(i);
@@ -42,11 +46,10 @@ public class PrimitiveCalculator {
             int min = dp[i - 1];
             int pointer = i - 1;
             if (i % 2 == 0 && dp[i / 2] < min) {
-                min = Math.min(dp[i / 2], min);
+                min = dp[i / 2];
                 pointer = i / 2;
             }
             if (i % 3 == 0 && dp[i / 3] < min) {
-                min = Math.min(dp[i / 3], min);
                 pointer = i / 3;
             }
             if (pointer == 0) {

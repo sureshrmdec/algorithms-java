@@ -14,8 +14,9 @@ package com.shulga.coursera.dp;
  */
 public class AsMuchGoldAsPossible {
     public static void main(String[] args) {
-        int[] weights = {1, 4, 8};
+        int[] weights = {1, 11, 2, 6, 2};
         System.out.println(new AsMuchGoldAsPossible().runReq(10, weights, weights.length - 1));
+        System.out.println(new AsMuchGoldAsPossible().runDP(10, weights));
     }
 
     private int runReq(int W, int[] weights, int n) {
@@ -31,18 +32,22 @@ public class AsMuchGoldAsPossible {
         );
     }
 
-    private int run(int W, int[] weights) {
-        int[][] dp = new int[W + 1][weights.length + 1];
-        for (int j = 0; j < weights.length; j++) {
+    private int runDP(int W, int[] weights) {
+        int[][] dp = new int[weights.length + 1][W + 1];
+        for (int j = 0; j <= weights.length; j++) {
             for (int w = 0; w <= W; w++) {
-                if (W <= 0) {
-                    dp[j][w] = dp[j-1][w];
-                }
-                if (weights[j] > W) {
-                    continue;
+                if (j == 0 || w == 0) {
+                    dp[j][w] = 0;
+                } else if (weights[j - 1] > w) {
+                    dp[j][w] = dp[j - 1][w];
+                } else {
+                    dp[j][w] = Math.max(
+                            dp[j - 1][w],
+                            weights[j - 1] + dp[j - 1][w - weights[j - 1]]
+                    );
                 }
             }
         }
-        return -1;
+        return dp[weights.length][W];
     }
 }

@@ -5,9 +5,9 @@ package com.shulga.coursera.dp;
  */
 public class KnapSack {
     public static void main(String[] args) {
-        int[] val = {60, 100, 120};
+        int[] val = {5, 2, 3,4};
 //        System.out.println(new KnapSack().run(50, new int[]{10, 20, 30}, val, val.length));
-        System.out.println(new KnapSack().runDP(2, new int[]{1, 1, 1}, val, val.length));
+        System.out.println(new KnapSack().runDP(4, new int[]{1, 8, 2,1}, val, val.length));
     }
 
     private int runDP(int W, int[] weights, int[] val, int n) {
@@ -44,6 +44,20 @@ public class KnapSack {
         return Math.max(
                 run(W, wt, val, n - 1),
                 val[n - 1] + run(W - wt[n - 1], wt, val, n - 1)
+        );
+    }
+
+    public int runReq(int W, int[] weights,int[] val,int n){
+        if(W==0 || n==0){
+            return 0;
+        }
+        if(weights[n-1]>W){
+            return runReq(W,weights,val,n-1);
+        }
+
+        return Math.max(
+                runReq(W,weights,val,n-1),
+                val[n-1]+runReq(W-weights[n-1],weights,val,n-1)
         );
     }
 }
