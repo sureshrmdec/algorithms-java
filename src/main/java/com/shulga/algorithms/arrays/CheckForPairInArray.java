@@ -33,12 +33,8 @@ public class CheckForPairInArray {
             if (numbers.contains((int) sqrt) && numbers.contains(a1)) pairsCounter++;
             numbers.remove((int)sqrt);
         }
-
         System.out.println("Pairs: " + pairsCounter);
     }
-
-
-
 
     public static int run3(int[] ar, int sum) {
         HashMap<Integer,Boolean> map = new HashMap<>();
