@@ -7,7 +7,7 @@ import java.util.Queue;
  * Created by eugene on 10/18/15.
  */
 public class BST<K extends Comparable, V> {
-    private BSTNode root;
+    BSTNode root;
 
     public static void main(String[] args) {
         BST<Integer, Integer> bst = new BST<Integer, Integer>();
@@ -18,11 +18,46 @@ public class BST<K extends Comparable, V> {
         bst.put(1, 100);
         bst.put(0, 0);
         bst.put(-3, -300);
-        bst.put(-1, -100);
+        bst.put(10, 1000);
+        bst.put(20, 2000);
+        bst.put(7, 700);
 
 //        System.out.println(bst.find(4));
 //        System.out.println(bst.find(5));
-        System.out.println(bst.floor(-2));
+        System.out.println(bst.rankNonReq(7,bst.root));
+        System.out.println(bst.rank(7));
+    }
+    int minHight(BSTNode node){
+        if(node==null || node.left==null || node.right==null){
+            return 0;
+        }
+        return 1+Math.min(hight(node.left), hight(node.right));
+    }
+
+    int hight(BSTNode node) {
+        if (node == null) {
+            return 0;
+        }
+        return 1 + Math.max(hight(node.left), hight(node.right));
+    }
+
+    void bfs(BSTNode node) {
+        Queue<BSTNode> queue = new LinkedList<>();
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            BSTNode pop = queue.poll();
+            System.out.println(pop.key);
+            if (pop.left != null) {
+                queue.add(pop.left);
+            }
+            if (pop.right != null) {
+                queue.add(pop.right);
+            }
+        }
+    }
+
+    private void dfsReq(BSTNode node, Queue<V> queue) {
+
     }
 
     public int size() {
@@ -36,23 +71,31 @@ public class BST<K extends Comparable, V> {
         return node.size;
     }
 
-    public void put(K key, V value) {
-        root = putReq(key, value, root);
+    private int nodeHight(BSTNode node) {
+        if (node == null) {
+            return 0;
+        }
+        return node.hight;
     }
 
-    private BSTNode putReq(K key, V value, BSTNode node) {
+    public void put(K key, V value) {
+        root = putReq(key, value, root,0);
+    }
+
+    private BSTNode putReq(K key, V value, BSTNode node, int compareNum) {
         if (node == null) {
-            return new BSTNode(key, value, 1);
+            return new BSTNode(key, value, 1, 1,compareNum);
         }
         int res = key.compareTo(node.key);
         if (res == 0) {
             node.value = value;
         } else if (res < 0) {
-            node.left = putReq(key, value, node.left);
+            node.left = putReq(key, value, node.left,++compareNum);
         } else {
-            node.right = putReq(key, value, node.right);
+            node.right = putReq(key, value, node.right,++compareNum);
         }
-        node.size = size(node.left) + size(node.right);
+        node.size = 1+ size(node.left) + size(node.right);
+        node.hight = 1 + Math.max(nodeHight(node.left), nodeHight(node.right));
         return node;
     }
 
@@ -69,12 +112,56 @@ public class BST<K extends Comparable, V> {
         return minReq(node.left);
     }
 
+    private BSTNode minNonReq(BSTNode node) {
+        if(node==null){
+            return null;
+        }
+        BSTNode current = node;
+        while(current.left!=null){
+            current = current.left;
+        }
+        return current;
+    }
+
     public V floor(K key) {
         BSTNode res = floorReq(key, root);
         if (res == null) {
             return null;
         }
         return res.value;
+    }
+
+    public V ceiling(K key) {
+        BSTNode res = ceilingReq(key, root);
+        if(res==null){
+            return null;
+        }
+        return res.value;
+    }
+
+    private BSTNode ceilingReq(K key, BSTNode node) {
+        if(node==null) return null;
+        int comp = key.compareTo(node.key);
+        if(comp==0) return node;
+        if(comp>0){
+            ceilingReq(key, node.right);
+        }
+        BSTNode res = ceilingReq(key,node.left);
+        if(res==null){
+            return node;
+        }else{
+            return res;
+        }
+    }
+
+
+    private BSTNode floorNonReq(K key, BSTNode node) {
+        if(node==null) return null;
+        BSTNode current = node;
+        while(current.left!=null && key.compareTo(current.left.key)<0){
+            current = current.left;
+        }
+        return null;
     }
 
     private BSTNode floorReq(K key, BSTNode node) {
@@ -114,6 +201,26 @@ public class BST<K extends Comparable, V> {
         root = deleteReq(key, root);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private BSTNode deleteMax(BSTNode node) {
+        if(node.right==null) return node.left;
+        node.right = deleteMax(node.right);
+        node.size = 1+size(node.left) + size(node.right);
+        return node;
+    }
+
     private BSTNode deleteReq(K key, BSTNode node) {
         if (node == null) {
             return null;
@@ -132,15 +239,40 @@ public class BST<K extends Comparable, V> {
             }
             BSTNode temp = node;
             node = minReq(node.right);
-//            node.right = deleteMin(node.right);
+            node.right = deleteMin(node.right);
             node.left = temp.left;
         }
         node.size = 1 + size(node.left) + size(node.right);
         return node;
     }
 
+    private BSTNode deleteMin(BSTNode node){
+        if(node.left==null) return node.right;
+        node.left = deleteMin(node.left);
+        node.size = 1 + size(node.left) + size(node.right);
+        return node;
+    }
+
+
+
     public int rank(K key) {
         return rankReq(key, root);
+    }
+
+    private int rankNonReq(K key, BSTNode node) {
+        if(node==null) return 0;
+        BSTNode current = node;
+        int sum = 0;
+        while(0 != key.compareTo(current.key)) {
+            int comp = key.compareTo(current.key);
+            if (comp < 0) {
+                current = current.left;
+            }else if(comp > 0){
+                sum+=1+size(current.left);
+                current = current.right;
+            }
+        }
+        return sum + size(current.left);
     }
 
     private int rankReq(K key, BSTNode node) {
@@ -160,6 +292,31 @@ public class BST<K extends Comparable, V> {
         keysReq(root, queue, lo, hi);
         return queue;
     }
+
+
+
+
+
+
+    private void keysReq2(BSTNode x, Queue<K> queue, K lo, K hi) {
+        if(x==null) return;
+        int loLimit = lo.compareTo(x.key);
+        int hiLimit = hi.compareTo(x.key);
+        if(loLimit<0){
+            keysReq2(x.left,queue,lo,hi);
+        }
+        if(loLimit<=0 && hiLimit>=0){
+            queue.add(x.key);
+        }
+        if(hiLimit>0){
+            keysReq2(x.right,queue,lo,hi);
+        }
+
+    }
+
+
+
+
 
     private void keysReq(BSTNode x, Queue<K> queue, K lo, K hi) {
         if (x == null) return;
@@ -209,11 +366,15 @@ public class BST<K extends Comparable, V> {
         K key;
         V value;
         int size;
+        int hight;
+        int pathSize;
 
-        BSTNode(K key, V value, int size) {
+        BSTNode(K key, V value, int size,int hight,int pathSize) {
             this.key = key;
             this.value = value;
             this.size = size;
+            this.hight = hight;
+            this.pathSize = pathSize;
         }
     }
 
