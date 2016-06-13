@@ -1,4 +1,4 @@
-package com.shulga.co;
+package com.shulga.co.dp;
 
 /**
  * Created by eshulga on 3/2/16.

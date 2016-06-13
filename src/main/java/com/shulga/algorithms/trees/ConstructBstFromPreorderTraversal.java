@@ -51,4 +51,5 @@ public class ConstructBstFromPreorderTraversal {
         Node root = tree.constructBst(ar, 0, ar.length - 1, 0);
         tree.preorder(root);
     }
+
 }

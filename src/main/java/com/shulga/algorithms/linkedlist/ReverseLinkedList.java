@@ -1,4 +1,4 @@
-package com.shulga.co;
+package com.shulga.algorithms.linkedlist;
 
 /**
  * Created by eugene on 2/13/16.

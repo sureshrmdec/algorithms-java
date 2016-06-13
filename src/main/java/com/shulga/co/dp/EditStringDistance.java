@@ -94,4 +94,19 @@ public class EditStringDistance {
     public int min(int i1, int i2, int i3) {
         return Math.min(i1, Math.min(i2, i3));
     }
+
+    /**
+     * Created by eugene on 3/6/16.
+     */
+    public static class EditDistance {
+
+        public static void main(String[] args) {
+            System.out.println(new EditDistance().run("geeks","geekss"));
+        }
+
+        private int run(String s1, String s2) {
+
+            return 0;
+        }
+    }
 }

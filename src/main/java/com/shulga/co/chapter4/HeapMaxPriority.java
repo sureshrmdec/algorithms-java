@@ -15,6 +15,25 @@ public class HeapMaxPriority {
         ar = new Comparable[capacity];
     }
 
+    public static void main(String[] args) {
+        HeapMaxPriority h = new HeapMaxPriority();
+        h.insert(2);
+        h.insert(555);
+        h.insert(8);
+        h.insert(5);
+        h.insert(8);
+        h.insert(1);
+        h.insert(23);
+        System.out.println(h.delMax());
+        System.out.println(h.delMax());
+        System.out.println(h.delMax());
+        System.out.println(h.delMax());
+        System.out.println(h.delMax());
+        System.out.println(h.delMax());
+        System.out.println(h.delMax());
+        System.out.println(h.delMax());
+    }
+
     public void insert(Comparable item) {
         if (N == ar.length - 1) {
             resize(N * 2);
@@ -58,25 +77,6 @@ public class HeapMaxPriority {
             exch(top, j);
             top = j;
         }
-    }
-
-    public static void main(String[] args) {
-        HeapMaxPriority h = new HeapMaxPriority();
-        h.insert(2);
-        h.insert(555);
-        h.insert(8);
-        h.insert(5);
-        h.insert(8);
-        h.insert(1);
-        h.insert(23);
-        System.out.println(h.delMax());
-        System.out.println(h.delMax());
-        System.out.println(h.delMax());
-        System.out.println(h.delMax());
-        System.out.println(h.delMax());
-        System.out.println(h.delMax());
-        System.out.println(h.delMax());
-        System.out.println(h.delMax());
     }
 
     private void exch(int n, int i) {

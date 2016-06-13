@@ -1,4 +1,4 @@
-package com.shulga.co;
+package com.shulga.co.dp;
 
 import java.util.*;
 
