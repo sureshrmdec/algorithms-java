@@ -7,7 +7,6 @@ public class QueueArray<T> implements Queue<T> {
     private int maxSize;
     private int nCount;
 
-    @SuppressWarnings("unchecked")
     public QueueArray(int N) {
         this.maxSize = N;
         ar = (T[]) new Object[maxSize];

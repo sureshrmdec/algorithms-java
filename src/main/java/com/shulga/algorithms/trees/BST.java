@@ -2,6 +2,7 @@ package com.shulga.algorithms.trees;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Created by eugene on 10/18/15.
@@ -11,27 +12,59 @@ public class BST<K extends Comparable, V> {
 
     public static void main(String[] args) {
         BST<Integer, Integer> bst = new BST<Integer, Integer>();
-        bst.put(5, 500);
-        bst.put(4, 400);
-//        bst.put(4,400);
-        bst.put(3, 300);
-        bst.put(1, 100);
-        bst.put(0, 0);
-        bst.put(-3, -300);
-        bst.put(10, 1000);
-        bst.put(20, 2000);
-        bst.put(7, 700);
+//        bst.put(5, 500);
+//        bst.put(4, 400);
+////        bst.put(4,400);
+//        bst.put(3, 300);
+//        bst.put(1, 100);
+//        bst.put(0, 0);
+//        bst.put(-3, -300);
+//        bst.put(10, 1000);
+//        bst.put(20, 2000);
+//        bst.put(7, 700);
 
-//        System.out.println(bst.find(4));
-//        System.out.println(bst.find(5));
-        System.out.println(bst.rankNonReq(7,bst.root));
-        System.out.println(bst.rank(7));
+        bst.put(10, 100);
+        bst.put(5, 50);
+        bst.put(15,1500);
+//        bst.put(3, 300);
+//        bst.put(4, 400);
+//        bst.put(1, 100);
+
+//        bst.dfs(bst.root);
+        System.out.println(bst.isFull(bst.root));
+//        System.out.println(bst.rankNonReq(7, bst.root));
+//        System.out.println(bst.rank(7));
     }
-    int minHight(BSTNode node){
-        if(node==null || node.left==null || node.right==null){
+
+    boolean ifTreeIsSubtree(BSTNode tree,BSTNode subtree){
+        if(tree==null || subtree==null) return false;
+        if(isIdentical(tree,subtree)) return true;
+        return ifTreeIsSubtree(tree.left,subtree) || ifTreeIsSubtree(tree.right,subtree);
+    }
+
+    boolean isIdentical(BSTNode tree, BSTNode subtree){
+        if(tree==null && subtree==null){
+            return true;
+        }
+        if(tree==null || subtree==null){
+            return false;
+        }
+        return isIdentical(tree.left,subtree.left) && isIdentical(tree.right,subtree.right);
+    }
+
+    boolean isFull(BSTNode node){
+        if(node==null) return true;
+        if((node.left!=null && node.right==null) || (node.right!=null && node.left==null)){
+            return false;
+        }
+        return isFull(node.left) && isFull(node.right);
+    }
+
+    int minHight(BSTNode node) {
+        if (node == null || node.left == null || node.right == null) {
             return 0;
         }
-        return 1+Math.min(hight(node.left), hight(node.right));
+        return 1 + Math.min(hight(node.left), hight(node.right));
     }
 
     int hight(BSTNode node) {
@@ -56,8 +89,19 @@ public class BST<K extends Comparable, V> {
         }
     }
 
-    private void dfsReq(BSTNode node, Queue<V> queue) {
-
+    private void dfs(BSTNode node) {
+        Stack<BSTNode> s = new Stack();
+        s.push(node);
+        while (!s.isEmpty()) {
+            BSTNode pop = s.pop();
+            System.out.println(pop.key);
+            if (pop.right != null) {
+                s.push(node.right);
+            }
+            if (pop.left != null) {
+                s.push(node.left);
+            }
+        }
     }
 
     public int size() {
@@ -79,22 +123,22 @@ public class BST<K extends Comparable, V> {
     }
 
     public void put(K key, V value) {
-        root = putReq(key, value, root,0);
+        root = putReq(key, value, root, 0);
     }
 
     private BSTNode putReq(K key, V value, BSTNode node, int compareNum) {
         if (node == null) {
-            return new BSTNode(key, value, 1, 1,compareNum);
+            return new BSTNode(key, value, 1, 1, compareNum);
         }
         int res = key.compareTo(node.key);
         if (res == 0) {
             node.value = value;
         } else if (res < 0) {
-            node.left = putReq(key, value, node.left,++compareNum);
+            node.left = putReq(key, value, node.left, ++compareNum);
         } else {
-            node.right = putReq(key, value, node.right,++compareNum);
+            node.right = putReq(key, value, node.right, ++compareNum);
         }
-        node.size = 1+ size(node.left) + size(node.right);
+        node.size = 1 + size(node.left) + size(node.right);
         node.hight = 1 + Math.max(nodeHight(node.left), nodeHight(node.right));
         return node;
     }
@@ -113,11 +157,11 @@ public class BST<K extends Comparable, V> {
     }
 
     private BSTNode minNonReq(BSTNode node) {
-        if(node==null){
+        if (node == null) {
             return null;
         }
         BSTNode current = node;
-        while(current.left!=null){
+        while (current.left != null) {
             current = current.left;
         }
         return current;
@@ -133,32 +177,32 @@ public class BST<K extends Comparable, V> {
 
     public V ceiling(K key) {
         BSTNode res = ceilingReq(key, root);
-        if(res==null){
+        if (res == null) {
             return null;
         }
         return res.value;
     }
 
     private BSTNode ceilingReq(K key, BSTNode node) {
-        if(node==null) return null;
+        if (node == null) return null;
         int comp = key.compareTo(node.key);
-        if(comp==0) return node;
-        if(comp>0){
+        if (comp == 0) return node;
+        if (comp > 0) {
             ceilingReq(key, node.right);
         }
-        BSTNode res = ceilingReq(key,node.left);
-        if(res==null){
+        BSTNode res = ceilingReq(key, node.left);
+        if (res == null) {
             return node;
-        }else{
+        } else {
             return res;
         }
     }
 
 
     private BSTNode floorNonReq(K key, BSTNode node) {
-        if(node==null) return null;
+        if (node == null) return null;
         BSTNode current = node;
-        while(current.left!=null && key.compareTo(current.left.key)<0){
+        while (current.left != null && key.compareTo(current.left.key) < 0) {
             current = current.left;
         }
         return null;
@@ -202,22 +246,10 @@ public class BST<K extends Comparable, V> {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     private BSTNode deleteMax(BSTNode node) {
-        if(node.right==null) return node.left;
+        if (node.right == null) return node.left;
         node.right = deleteMax(node.right);
-        node.size = 1+size(node.left) + size(node.right);
+        node.size = 1 + size(node.left) + size(node.right);
         return node;
     }
 
@@ -246,13 +278,12 @@ public class BST<K extends Comparable, V> {
         return node;
     }
 
-    private BSTNode deleteMin(BSTNode node){
-        if(node.left==null) return node.right;
+    private BSTNode deleteMin(BSTNode node) {
+        if (node.left == null) return node.right;
         node.left = deleteMin(node.left);
         node.size = 1 + size(node.left) + size(node.right);
         return node;
     }
-
 
 
     public int rank(K key) {
@@ -260,15 +291,15 @@ public class BST<K extends Comparable, V> {
     }
 
     private int rankNonReq(K key, BSTNode node) {
-        if(node==null) return 0;
+        if (node == null) return 0;
         BSTNode current = node;
         int sum = 0;
-        while(0 != key.compareTo(current.key)) {
+        while (0 != key.compareTo(current.key)) {
             int comp = key.compareTo(current.key);
             if (comp < 0) {
                 current = current.left;
-            }else if(comp > 0){
-                sum+=1+size(current.left);
+            } else if (comp > 0) {
+                sum += 1 + size(current.left);
                 current = current.right;
             }
         }
@@ -294,26 +325,21 @@ public class BST<K extends Comparable, V> {
     }
 
 
-
-
     private void keysReq2(BSTNode x, Queue<K> queue, K lo, K hi) {
-        if(x==null) return;
+        if (x == null) return;
         int loLimit = lo.compareTo(x.key);
         int hiLimit = hi.compareTo(x.key);
-        if(loLimit<0){
-            keysReq2(x.left,queue,lo,hi);
+        if (loLimit < 0) {
+            keysReq2(x.left, queue, lo, hi);
         }
-        if(loLimit<=0 && hiLimit>=0){
+        if (loLimit <= 0 && hiLimit >= 0) {
             queue.add(x.key);
         }
-        if(hiLimit>0){
-            keysReq2(x.right,queue,lo,hi);
+        if (hiLimit > 0) {
+            keysReq2(x.right, queue, lo, hi);
         }
 
     }
-
-
-
 
 
     private void keysReq(BSTNode x, Queue<K> queue, K lo, K hi) {
@@ -367,7 +393,7 @@ public class BST<K extends Comparable, V> {
         int hight;
         int pathSize;
 
-        BSTNode(K key, V value, int size,int hight,int pathSize) {
+        BSTNode(K key, V value, int size, int hight, int pathSize) {
             this.key = key;
             this.value = value;
             this.size = size;

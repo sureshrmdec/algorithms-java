@@ -37,13 +37,16 @@ public class DeleteNodeLinkedList {
         while (current.next != null && current.next.data != data) {
             current = current.next;
         }
-        current.next = current.next.next;
+        if (current.next != null) {
+            current.next = current.next.next;
+        }
         return node;
     }
 
     static class Node {
         Node next;
         int data;
+
         Node(int data) {
             this.data = data;
         }

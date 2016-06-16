@@ -11,6 +11,31 @@ import com.shulga.algorithms.collections.old.adt.StackArray;
  */
 public class SortStack {
 
+    public static void main(String[] args) {
+        Stack<Integer> stack = new StackArray<>();
+        stack.push(1);
+        stack.push(5);
+        stack.push(3);
+        stack.push(30);
+        stack.push(2);
+        Stack<Integer> stack1 = new SortStack().sort2(stack);
+        while (!stack1.isEmpty()) {
+            System.out.print(stack1.pop() + " ");
+        }
+    }
+
+    public Stack<Integer> sort2(Stack<Integer> stack) {
+        Stack<Integer> sorted = new StackArray<>();
+        while (!stack.isEmpty()) {
+            Integer temp = stack.pop();
+            while (!sorted.isEmpty() && sorted.peek() < temp) {
+                stack.push(sorted.pop());
+            }
+            sorted.push(temp);
+        }
+        return sorted;
+    }
+
     public Stack<Integer> sort(Stack<Integer> stack) {
         Stack<Integer> sorted = new StackArray();
         while (!stack.isEmpty()) {
@@ -22,4 +47,5 @@ public class SortStack {
         }
         return sorted;
     }
+
 }

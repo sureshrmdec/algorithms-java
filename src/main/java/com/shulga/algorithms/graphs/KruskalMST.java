@@ -2,8 +2,8 @@ package com.shulga.algorithms.graphs;
 
 import com.shulga.algorithms.graphs.model.Edge;
 import com.shulga.algorithms.graphs.model.EdgeWeightedGraph;
-import com.shulga.coursera.WeightedQuickUnionUF;
-import com.shulga.coursera.chapter4.HeapMinPriorityQueue;
+import com.shulga.co.WeightedQuickUnionUF;
+import com.shulga.co.chapter4.HeapMinPriorityQueue;
 
 import java.util.ArrayList;
 import java.util.List;

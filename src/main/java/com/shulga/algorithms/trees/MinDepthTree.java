@@ -9,21 +9,28 @@ package com.shulga.algorithms.trees;
  */
 public class MinDepthTree {
 
+    public static void main(String[] args) {
+        Node root = new Node(1);
+        root.left = new Node(0);
+        root.right = new Node(4);
+        root.right.left = new Node(3);
+        root.right.right = new Node(5);
+        MinDepthTree l = new MinDepthTree();
+        System.out.println(l.minDepth(root));
+    }
+
     public int minDepth(Node root) {
-        if (root == null) {
+        if (root == null) return 0;
+        if (root.left == null && root.right == null) {
             return 0;
         }
-        if (root.left == null && root.right == null) {
-            return 1;
-        }
-
-        if (root.left != null) {
-            return 1 + minDepth(root.left);
-        }
-        if (root.right != null) {
+        if (root.left == null) {
             return 1 + minDepth(root.right);
         }
-        return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
+        if (root.right == null) {
+            return 1 + minDepth(root.left);
+        }
+        return 1 + Math.min(minDepth(root.left), minDepth(root.right));
     }
 
     public boolean isFull(Node root) {
@@ -39,44 +46,10 @@ public class MinDepthTree {
     }
 
     private static class Node {
+        Node left, right;
+        int data;
         Node(int data) {
             this.data = data;
         }
-
-        Node left, right;
-        int data;
-    }
-
-    public static void main(String[] args) {
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.left.left = new Node(4);
-        root.left.right = new Node(5);
-        MinDepthTree l = new MinDepthTree();
-        System.out.println(l.minimumDepth(root));
-        System.out.println(l.minDepth(root));
-    }
-
-    private int minimumDepth(Node root) {
-        // Corner case. Should never be hit unless the code is
-        // called on root = NULL
-        if (root == null)
-            return 0;
-
-        // Base case : Leaf Node. This accounts for height = 1.
-        if (root.left == null && root.right == null)
-            return 1;
-
-        // If left subtree is NULL, recur for right subtree
-        if (root.left != null)
-            return minimumDepth(root.right) + 1;
-
-        // If right subtree is NULL, recur for right subtree
-        if (root.right != null)
-            return minimumDepth(root.left) + 1;
-
-        return Math.min(minimumDepth(root.left), minimumDepth(root.right)) + 1;
-
     }
 }

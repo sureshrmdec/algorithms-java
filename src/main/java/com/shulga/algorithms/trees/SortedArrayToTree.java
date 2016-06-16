@@ -12,13 +12,13 @@ package com.shulga.algorithms.trees;
  /  \
  1    3
 
- Input: Array {1, 2, 3, 4}
+ Input: Array {1, 2, 3, 4, 5}
  Output: A Balanced BST
- 3
+   3
  /  \
  2    4
- /
- 1
+ /     \
+ 1      5
  */
 public class SortedArrayToTree {
     private static Node root;

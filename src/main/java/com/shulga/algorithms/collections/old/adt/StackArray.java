@@ -38,7 +38,10 @@ public class StackArray<T> implements Stack<T>, Iterable<T> {
 
     @Override
     public T peek() {
-        return ar[nCount];
+        if(isEmpty()){
+            return null;
+        }
+        return ar[nCount-1];
     }
 
     @Override

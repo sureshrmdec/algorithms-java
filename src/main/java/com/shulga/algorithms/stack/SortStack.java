@@ -1,6 +1,6 @@
 package com.shulga.algorithms.stack;
 
-import com.shulga.coursera.chapter2.ArrayStack;
+import com.shulga.co.chapter2.ArrayStack;
 
 /**
  * Created by eugene on 2/13/16.

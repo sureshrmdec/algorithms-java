@@ -4,49 +4,22 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 /**
- * Created by eshulga on 3/1/16.
+ * Created by eshulga on 6/2/16.
  */
-public class LargestPalindomeProduct {
+public class Template {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         PrintWriter out = new PrintWriter(outputStream);
         TaskA solver = new TaskA();
-        solver.solve(new int[]{-4, -1, 2, 3, 4}, in, out);
+        solver.solve(in, out);
         out.close();
     }
 
     static class TaskA {
-        public void solve(int[] ars, InputReader in, PrintWriter out) {
+        public void solve(InputReader in, PrintWriter out) {
             int cases = in.nextInt();
-            for (int k = 0; k < cases; k++) {
-                int num = in.nextInt();
-                int palindrome = 0;
-                for (int i = 999; i >= 100; i--) {
-                    for (int j = 999; j >= 100; j--) {
-                        int res = i * j;
-                        if (isPalindrome(res) && res < num && res > palindrome) {
-                            palindrome = res;
-                        }
-                    }
-                }
-                out.println(palindrome);
-            }
-        }
-
-        private boolean isPalindrome(int res) {
-            String num = String.valueOf(res);
-            int i=0;
-            int j = num.length()-1;
-            while(i<j){
-                if(num.charAt(i)!=num.charAt(j)){
-                    return false;
-                }
-                i++;
-                j--;
-            }
-            return true;
         }
     }
 
@@ -74,4 +47,6 @@ public class LargestPalindomeProduct {
             return Integer.parseInt(next());
         }
     }
+
+
 }

@@ -13,8 +13,11 @@ package com.shulga.algorithms.trees;
  * 1    7      50
  * <p>
  * Method 1 ( O(n^2) time complexity )
- * The first element of preorder traversal is always root. We first construct the root. Then we find the index of first element which is greater than root. Let the index be ‘i’. The values between root and ‘i’ will be part of left subtree, and the values between ‘i+1′ and ‘n-1′ will be part of right subtree. Divide given pre[] at index “i” and recur for left and right sub-trees.
- * For example in {10, 5, 1, 7, 40, 50}, 10 is the first element, so we make it root. Now we look for the first element greater than 10, we find 40. So we know the structure of BST is as following.
+ * The first element of preorder traversal is always root. We first construct the root. Then we find the index of first element which is greater than root.
+ * Let the index be ‘i’. The values between root and ‘i’ will be part of left subtree, and the values between ‘i+1′ and ‘n-1′ will be part of right subtree.
+ * Divide given pre[] at index “i” and recur for left and right sub-trees.
+ * For example in {10, 5, 1, 7, 40, 50}, 10 is the first element, so we make it root. Now we look for the first element greater than 10, we find 40.
+ * So we know the structure of BST is as following.
  */
 public class ConstructBstFromPreorderTraversal {
     private class Node {
@@ -48,4 +51,5 @@ public class ConstructBstFromPreorderTraversal {
         Node root = tree.constructBst(ar, 0, ar.length - 1, 0);
         tree.preorder(root);
     }
+
 }
