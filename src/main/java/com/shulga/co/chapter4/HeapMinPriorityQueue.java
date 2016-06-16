@@ -12,6 +12,10 @@ public class HeapMinPriorityQueue {
         nSize = n;
     }
 
+    public int size(){
+        return N;
+    }
+
     public void insert(Comparable item) {
         ar[++N] = item;
         swim(N);
@@ -22,6 +26,10 @@ public class HeapMinPriorityQueue {
             exch(n / 2, n);
             n = n / 2;
         }
+    }
+
+    public Comparable peek() {
+        return ar[1];
     }
 
     public Comparable delMin() {

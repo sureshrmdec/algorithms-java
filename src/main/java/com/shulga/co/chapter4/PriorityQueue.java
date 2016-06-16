@@ -9,6 +9,10 @@ public class PriorityQueue {
     public PriorityQueue(int n){
         ar = new Comparable[n];
     }
+
+    public boolean isEmpty(){
+        return ar.length==0;
+    }
     public void add(Comparable n){
         ar[N] = n;
         swim(++N);

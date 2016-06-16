@@ -34,6 +34,10 @@ public class HeapMaxPriority {
         System.out.println(h.delMax());
     }
 
+    public int size(){
+        return N;
+    }
+
     public void insert(Comparable item) {
         if (N == ar.length - 1) {
             resize(N * 2);
@@ -62,6 +66,11 @@ public class HeapMaxPriority {
         exch(1, N--);
         ar[N + 1] = null;
         sink(1);
+        return max;
+    }
+
+    public Comparable peek() {
+        Comparable max = ar[1];
         return max;
     }
 
