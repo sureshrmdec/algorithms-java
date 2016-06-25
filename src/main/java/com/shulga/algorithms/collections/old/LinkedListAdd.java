@@ -35,26 +35,54 @@ public class LinkedListAdd {
         LinkedListNode two = new LinkedListNode();
         two.fill(2, 1);
         LinkedListNode add = add(one, two, 0);
-        LinkedListNode add2 = add2(one, two, 0);
         add.print();
+        LinkedListNode add2 = addNonRecursive(one, two);
         System.out.println();
         add2.print();
     }
 
-    public static LinkedListNode add2(LinkedListNode<Integer> one, LinkedListNode<Integer> two, int reminder) {
-        if (one == null && two == null) {
-            return null;
+    /**
+     * Input: (3 -> 1 -> 5), (5 -> 9 -> 2) 513 + 295, 315+592
+     * Output: 8 -> 0 -> 8
+     */
+    public static LinkedListNode addNonRecursive(LinkedListNode<Integer> one, LinkedListNode<Integer> two) {
+        int reminder = 0;
+        LinkedListNode resHead = null;
+        LinkedListNode res = null;
+        while (one != null || two != null) {
+            int sum = 0;
+            if (one != null && two != null) {
+                sum = one.data + two.data + reminder;
+                one = one.next;
+                two = two.next;
+            } else if (one == null) {
+                sum = two.data + reminder;
+                two = two.next;
+            } else if (two == null) {
+                sum = one.data + reminder;
+                one = one.next;
+            }
+            if (sum >= 10) {
+                reminder = 1;
+            } else {
+                reminder = 0;
+            }
+
+            if (res == null) {
+                res = new LinkedListNode();
+                res.data = sum % 10;
+                resHead = res;
+            } else {
+                res.next = new LinkedListNode();
+                res.next.data = sum % 10;
+                res = res.next;
+            }
         }
-        LinkedListNode resultNumber = new LinkedListNode();
-        int res = reminder;
-        if (one != null) {
-            res += one.data;
+        if (reminder == 1) {
+            res.next = new LinkedListNode();
+            res.next.data = reminder;
         }
-        if (two != null) {
-            res += two.data;
-        }
-        resultNumber.data = res % 10;
-        resultNumber.next = add2(one != null ? one.next : null, two != null ? two.next : null, res >= 10 ? 1 : 0);
-        return resultNumber;
+        return resHead;
     }
+
 }

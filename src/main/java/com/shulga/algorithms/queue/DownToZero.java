@@ -1,10 +1,12 @@
+package com.shulga.algorithms.queue;
+
 import java.io.*;
 import java.util.StringTokenizer;
 
 /**
- * Created by eshulga on 2/25/16.
+ * Created by eshulga on 6/17/16.
  */
-public class VasiaAndString {
+public class DownToZero {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -14,12 +16,11 @@ public class VasiaAndString {
         solver.solve(new int[]{1, 1, 3}, in, out);
         out.close();
     }
+
+
     static class TaskA {
 
         public void solve(int[] arr, InputReader in, PrintWriter out) {
-            int length = in.nextInt();
-            int changes = in.nextInt();
-            String str = in.next();
 
         }
     }

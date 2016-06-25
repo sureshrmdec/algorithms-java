@@ -25,36 +25,75 @@ public class BST<K extends Comparable, V> {
 
         bst.put(10, 100);
         bst.put(5, 50);
-        bst.put(15,1500);
+        bst.put(15, 1500);
 //        bst.put(3, 300);
 //        bst.put(4, 400);
 //        bst.put(1, 100);
 
 //        bst.dfs(bst.root);
-        System.out.println(bst.isFull(bst.root));
+//        System.out.println(bst.isFull(bst.root));
 //        System.out.println(bst.rankNonReq(7, bst.root));
+        bst.inorder(bst.root);
 //        System.out.println(bst.rank(7));
     }
 
-    boolean ifTreeIsSubtree(BSTNode tree,BSTNode subtree){
-        if(tree==null || subtree==null) return false;
-        if(isIdentical(tree,subtree)) return true;
-        return ifTreeIsSubtree(tree.left,subtree) || ifTreeIsSubtree(tree.right,subtree);
+    public void inorderKthNode(BSTNode node, int k) {
+        if (node == null) return;
+        if (node.size > k) {
+            inorder(node.left);
+        } else if (node.size < k) {
+            inorder(node.right);
+        } else {
+            System.out.println(node.value);
+        }
+
     }
 
-    boolean isIdentical(BSTNode tree, BSTNode subtree){
-        if(tree==null && subtree==null){
+    void inorder(BSTNode tree) {
+        LinkedList<Integer> queue = new LinkedList<>();
+        Stack<BSTNode> stack = new Stack<>();
+        BSTNode current = tree;
+        while (current != null) {
+            stack.push(current);
+            current = current.left;
+        }
+        while (!stack.isEmpty()) {
+            BSTNode pop = stack.pop();
+
+            Integer value = (Integer) pop.value;
+            queue.add(value);
+            System.out.println(value);
+
+            if (pop.right != null) {
+                pop = pop.right;
+                while (pop != null) {
+                    stack.push(pop);
+                    pop = pop.left;
+                }
+            }
+        }
+
+    }
+
+    boolean ifTreeIsSubtree(BSTNode tree, BSTNode subtree) {
+        if (tree == null || subtree == null) return false;
+        if (isIdentical(tree, subtree)) return true;
+        return ifTreeIsSubtree(tree.left, subtree) || ifTreeIsSubtree(tree.right, subtree);
+    }
+
+    boolean isIdentical(BSTNode tree, BSTNode subtree) {
+        if (tree == null && subtree == null) {
             return true;
         }
-        if(tree==null || subtree==null){
+        if (tree == null || subtree == null) {
             return false;
         }
-        return isIdentical(tree.left,subtree.left) && isIdentical(tree.right,subtree.right);
+        return isIdentical(tree.left, subtree.left) && isIdentical(tree.right, subtree.right);
     }
 
-    boolean isFull(BSTNode node){
-        if(node==null) return true;
-        if((node.left!=null && node.right==null) || (node.right!=null && node.left==null)){
+    boolean isFull(BSTNode node) {
+        if (node == null) return true;
+        if ((node.left != null && node.right == null) || (node.right != null && node.left == null)) {
             return false;
         }
         return isFull(node.left) && isFull(node.right);
@@ -64,14 +103,14 @@ public class BST<K extends Comparable, V> {
         if (node == null || node.left == null || node.right == null) {
             return 0;
         }
-        return 1 + Math.min(hight(node.left), hight(node.right));
+        return 1 + Math.min(height(node.left), height(node.right));
     }
 
-    int hight(BSTNode node) {
+    int height(BSTNode node) {
         if (node == null) {
             return 0;
         }
-        return 1 + Math.max(hight(node.left), hight(node.right));
+        return 1 + Math.max(height(node.left), height(node.right));
     }
 
     void bfs(BSTNode node) {

@@ -4,7 +4,7 @@ package com.shulga.co.chapter4;
  * Created by ievgen on 10/7/2014.
  */
 public class HeapMaxPriority {
-    private Comparable[] ar;
+    public Comparable[] ar;
     private int N;
 
     public HeapMaxPriority() {

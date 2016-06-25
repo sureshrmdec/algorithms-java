@@ -1,10 +1,23 @@
+package com.shulga.algorithms.queue;
+
 import java.io.*;
 import java.util.StringTokenizer;
 
 /**
- * Created by eshulga on 2/25/16.
+ * Created by eshulga on 6/16/16.
+ * Suppose there is a circle. There are  petrol pumps on that circle. Petrol pumps are numbered  to  (both inclusive).
+ * You have two pieces of information corresponding to each of the petrol pump: (1) the amount of petrol that particular
+ * petrol pump will give, and (2) the distance from that petrol pump to the next petrol pump.
+
+ Initially, you have a tank of infinite capacity carrying no petrol. You can start the tour at any of the petrol pumps.
+ Calculate the first point from where the truck will be able to complete the circle. Consider that the truck will stop at
+ each of the petrol pumps. The truck will move one kilometer for each litre of the petrol.
+ 3
+ 1 5
+ 10 3
+ 3 4
  */
-public class VasiaAndString {
+public class TruckTour {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -14,12 +27,11 @@ public class VasiaAndString {
         solver.solve(new int[]{1, 1, 3}, in, out);
         out.close();
     }
+
+
     static class TaskA {
 
         public void solve(int[] arr, InputReader in, PrintWriter out) {
-            int length = in.nextInt();
-            int changes = in.nextInt();
-            String str = in.next();
 
         }
     }

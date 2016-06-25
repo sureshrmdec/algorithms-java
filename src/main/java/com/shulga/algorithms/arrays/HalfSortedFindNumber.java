@@ -6,7 +6,7 @@ package com.shulga.algorithms.arrays;
  */
 public class HalfSortedFindNumber {
     public static void main(String[] args) {
-        System.out.println(new HalfSortedFindNumber().run(new int[]{2, 6, 8, 9, 15, 20, 18, 16, 12, 7, 1}, 9));
+        System.out.println(new HalfSortedFindNumber().run(new int[]{2, 6, 8, 9, 15, 20, 18, 16, 12, 7, 1}, 1));
     }
 
     private int run(int[] ar, int num) {

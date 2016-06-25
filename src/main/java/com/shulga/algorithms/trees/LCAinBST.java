@@ -25,21 +25,63 @@ public class LCAinBST {
     }
 
     public int findLCA(Node node, int i, int j) {
-        if (i < node.data) {
-            if (j > node.data) return node.data;
+        if (node.data > i && node.data > j) {
             return findLCA(node.left, i, j);
-        } else if (i > node.data) {
-            if (j < node.data) return node.data;
+        } else if (node.data < i && node.data < j) {
             return findLCA(node.right, i, j);
         } else {
-            return i;
+            return node.data;
         }
+    }
+    public int height(NodeWithParent node) {
+        int counter = 0;
+        while(node.parent!=null){
+            counter++;
+        }
+        return counter+1;
+    }
+
+    public NodeWithParent findLCAWithParent(NodeWithParent node1,NodeWithParent node2) {
+        int height1 = height(node1);
+        int height2 = height(node2);
+        NodeWithParent bigger = null;
+        NodeWithParent smaller;
+        int diff;
+        if(height1>height2){
+            bigger = node1;
+            smaller = node2;
+            diff = height1-height2;
+        }else{
+            bigger = node2;
+            smaller = node1;
+            diff = height2-height1;
+        }
+        for (int i = 0; i < diff; i++) {
+            bigger = bigger.parent;
+        }
+        for (int i = 0; i < Math.min(height1,height2); i++) {
+            smaller = smaller.parent;
+            bigger = bigger.parent;
+        }
+        return smaller;
     }
 
     private static class Node {
         Node left, right;
         int data;
+
         Node(int data) {
+            this.data = data;
+        }
+    }
+
+    private static class NodeWithParent {
+        NodeWithParent left;
+        NodeWithParent right;
+        NodeWithParent parent;
+        int data;
+
+        NodeWithParent(int data) {
             this.data = data;
         }
     }
