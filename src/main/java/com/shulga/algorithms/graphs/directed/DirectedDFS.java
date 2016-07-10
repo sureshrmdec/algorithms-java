@@ -18,6 +18,7 @@ public class DirectedDFS {
 
     private void dfs(Digraph g,int m) {
         marked[m] = true;
+        System.out.println(m);
         for(Integer child: g.adj(m)){
             if(!marked[child]){
                 dfs(g,child);
@@ -26,6 +27,14 @@ public class DirectedDFS {
     }
 
     public static void main(String[] args) {
-        //TODO
+        Digraph g = new Digraph(7);
+        g.addEdge(0,1);
+        g.addEdge(1,2);
+        g.addEdge(2,3);
+        g.addEdge(3,4);
+        g.addEdge(4, 5);
+        g.addEdge(5, 1);
+        g.addEdge(3, 6);
+        DirectedDFS c = new DirectedDFS(g,1);
     }
 }

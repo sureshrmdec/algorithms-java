@@ -38,7 +38,6 @@ public class DirectedCycle {
                     cycle.push(i);
                 }
                 cycle.push(child);
-                cycle.push(m);
             }
 
         }
@@ -56,7 +55,19 @@ public class DirectedCycle {
 
 
     public static void main(String[] args) {
-        //TODO
+        Digraph g = new Digraph(6);
+        g.addEdge(0,1);
+        g.addEdge(1,2);
+        g.addEdge(2,3);
+        g.addEdge(3,4);
+        g.addEdge(4, 5);
+        g.addEdge(5, 1);
+        DirectedCycle c = new DirectedCycle(g);
+        if(c.hasCycle()){
+            c.printCycle();
+        }else{
+            System.out.println("No cycle");
+        }
     }
 
 }

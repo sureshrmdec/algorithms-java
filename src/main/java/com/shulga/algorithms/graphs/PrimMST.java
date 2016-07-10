@@ -2,6 +2,7 @@ package com.shulga.algorithms.graphs;
 
 import com.shulga.algorithms.graphs.model.Edge;
 import com.shulga.algorithms.graphs.model.EdgeWeightedGraph;
+import com.shulga.algorithms.heap.IndexedMinPQ;
 import com.shulga.co.chapter4.HeapMinPriorityQueue;
 
 import java.util.ArrayList;
@@ -16,11 +17,29 @@ public class PrimMST {
         Edge[] edgeTo = new Edge[g.V()];
         double[] distTo = new double[g.V()];
         boolean[] marked = new boolean[g.V()];
-        HeapMinPriorityQueue indexMinPQ = new HeapMinPriorityQueue(g.V()+1);
+        IndexedMinPQ indexMinPQ = new IndexedMinPQ(g.V());
         for (int i = 0; i < g.V(); i++) {
             distTo[i] = Double.POSITIVE_INFINITY;
         }
         distTo[0] = 0.0;
+        indexMinPQ.insert(0,distTo[0]);
+        while(!indexMinPQ.isEmpty()){
+            int i = indexMinPQ.delMin();
+            marked[i] = true;
+            for (Edge e :g.adj(i)){
+                int other = e.other(i);
+                if(marked[other]) continue;
+                if(e.getWeight()<distTo[other]){
+                    distTo[other] = e.getWeight();
+                    edgeTo[other] = e;
+                    if(indexMinPQ.contains(other)){
+                        indexMinPQ.decreaseKey(other,distTo[other]);
+                    }else{
+                        indexMinPQ.insert(other,distTo[other]);
+                    }
+                }
+            }
+        }
         return null;
     }
 
