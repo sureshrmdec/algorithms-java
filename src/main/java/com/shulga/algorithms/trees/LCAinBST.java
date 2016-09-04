@@ -33,37 +33,33 @@ public class LCAinBST {
             return node.data;
         }
     }
+
     public int height(NodeWithParent node) {
         int counter = 0;
-        while(node.parent!=null){
+        while (node.parent != null) {
             counter++;
         }
-        return counter+1;
+        return counter;
     }
 
-    public NodeWithParent findLCAWithParent(NodeWithParent node1,NodeWithParent node2) {
+    public NodeWithParent findLCAWithParent(NodeWithParent node1, NodeWithParent node2) {
         int height1 = height(node1);
         int height2 = height(node2);
-        NodeWithParent bigger = null;
-        NodeWithParent smaller;
-        int diff;
-        if(height1>height2){
-            bigger = node1;
-            smaller = node2;
-            diff = height1-height2;
-        }else{
-            bigger = node2;
-            smaller = node1;
-            diff = height2-height1;
+        if (height2 > height1) {
+            NodeWithParent temp = node1;
+            node1 = node2;
+            node2 = temp;
         }
-        for (int i = 0; i < diff; i++) {
-            bigger = bigger.parent;
+        int dif = height1 - height2;
+        while (dif-- > 0) {
+            node1 = node1.parent;
         }
-        for (int i = 0; i < Math.min(height1,height2); i++) {
-            smaller = smaller.parent;
-            bigger = bigger.parent;
+
+        while(node1!=node2){
+            node1 = node1.parent;
+            node2 = node2.parent;
         }
-        return smaller;
+        return node1;
     }
 
     private static class Node {

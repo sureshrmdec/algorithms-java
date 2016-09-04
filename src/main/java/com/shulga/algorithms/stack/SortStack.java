@@ -1,41 +1,40 @@
 package com.shulga.algorithms.stack;
 
-import com.shulga.co.chapter2.ArrayStack;
-
 /**
  * Created by eugene on 2/13/16.
  */
 public class SortStack {
     public static void main(String[] args) {
-        ArrayStack<Integer> stack = new ArrayStack<>();
+        StackLinkedList<Integer> stack = new StackLinkedList<>();
         stack.push(10);
         stack.push(2);
         stack.push(30);
         stack.push(4);
-        for (Integer num:stack){
-            System.out.print(num+" ");
+        for (Integer num : stack) {
+            System.out.print(num + " ");
         }
-        run(stack);
-        for (Integer num:stack){
-            System.out.print(num+" ");
+        sort(stack);
+        System.out.println();
+        for (Integer num : stack) {
+            System.out.print(num + " ");
         }
 
     }
 
-    public static void run(ArrayStack<Integer> stack){
-        if(stack.isEmpty()) return;
+    public static void sort(StackLinkedList<Integer> stack) {
+        if (stack.isEmpty()) return;
         Integer pop = stack.pop();
-        run(stack);
-        insertEnd(stack, pop);
+        sort(stack);
+        sortedInsertEnd(stack, pop);
     }
 
-    public static void insertEnd(ArrayStack<Integer> stack,Integer num) {
-        if (stack.isEmpty() ) {//TODO
+    public static void sortedInsertEnd(StackLinkedList<Integer> stack, Integer num) {
+        if (stack.isEmpty() || stack.peek()>num) {
             stack.push(num);
             return;
         }
         Integer value = stack.pop();
-            insertEnd(stack, num);
+        sortedInsertEnd(stack, num);
         stack.push(value);
     }
 }

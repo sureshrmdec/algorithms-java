@@ -25,7 +25,7 @@ public class RotateMatrix {
                 int top = matrix[first][i]; //save top left
                 //buttom left to top left
                 matrix[first][i] = matrix[last - offset][first];
-                //right to left (buttom)
+                //right to left (bottom)
                 matrix[last - offset][first] = matrix[last][last - offset];
                 //right top to right buttom
                 matrix[last][last - offset] = matrix[i][last];
@@ -42,6 +42,31 @@ public class RotateMatrix {
                 int item = matrix[i][j];
                 String space = item < 10 ? "   " : "  ";
                 System.out.print(item + space);
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // rotate matrix 90 degrees
+    private static void rotate2(int[][] matrix, int width) {
+        for (int offset = 0; offset < matrix.length / 2; offset++) {
+            for (int j = 0; j < width; j=j/2) {
+                int tmp = matrix[offset+j][offset];
+                matrix[offset+j][offset+width] = matrix[matrix.length-1-width][offset];
+                matrix[matrix.length-1-width][offset] = matrix[matrix.length-1-offset][matrix.length-1-width];
+                matrix[matrix.length-1-offset][matrix.length-1-width] = matrix[matrix.length-offset][width];
+                matrix[matrix.length-offset][width] = tmp;
             }
         }
     }

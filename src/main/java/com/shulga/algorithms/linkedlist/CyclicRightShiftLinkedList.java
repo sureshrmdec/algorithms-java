@@ -18,6 +18,7 @@ public class CyclicRightShiftLinkedList {
         }
     }
 
+
     private Node run(Node node,int n) {
         Node first = node;
         Node current = node;

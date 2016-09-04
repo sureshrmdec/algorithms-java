@@ -1,4 +1,4 @@
-package com.shulga.algorithms.collections.old.adt;
+package com.shulga.algorithms.queue;
 
 public class QueueArray<T> implements Queue<T> {
     private T[] ar;

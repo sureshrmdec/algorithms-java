@@ -1,4 +1,4 @@
-package com.shulga.algorithms.collections.old;
+package com.shulga.algorithms.linkedlist;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

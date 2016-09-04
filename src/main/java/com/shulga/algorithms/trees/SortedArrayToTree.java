@@ -58,14 +58,12 @@ public class SortedArrayToTree {
     }
 
     public Node toTree(int[] ar,int start,int end){
-        if(start<end){
-            return null;
-        }
-        int mid = start+(end-start)/2;
+        if(start>end) return null;
+       int mid = start + (end-start)/2;
         Node node = new Node();
-        node.data=ar[mid];
+        node.data = ar[mid];
         node.left = toTree(ar,start,mid-1);
-        node.right = toTree(ar,mid+1,end);
+        node.right = toTree(ar,mid,end);
         return node;
     }
 }

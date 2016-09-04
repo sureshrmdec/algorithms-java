@@ -21,8 +21,27 @@ package com.shulga.algorithms.arrays;
 //TODO
 public class GenerateAllPossibleSortedArrays {
     public static void main(String[] args) {
-        System.out. println(new GenerateAllPossibleSortedArrays().run(new int[]{10, 15, 25}, new int[]{1, 5, 20, 30}));
+        System.out.println(new GenerateAllPossibleSortedArrays().run(new int[]{10, 15, 25}, new int[]{1, 5, 20, 30}));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private int run(int[] ar1, int[] ar2) {
         return 0;

@@ -5,7 +5,7 @@ package com.shulga.algorithms.arrays;
  */
 public class MajorityElement {
     public static void main(String[] args) {
-        System.out.println("Ans: " + new MajorityElement().run2(new int[]{5, 2, 2, 2, 5, 5, 5}));
+        System.out.println("Ans: " + new MajorityElement().run2(new int[]{5, 5, 5, 5, 2, 2, 2, 2, 2}));
     }
 
     public static int findCandidate(int[] ar, int length) {

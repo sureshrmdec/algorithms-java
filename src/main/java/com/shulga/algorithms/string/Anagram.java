@@ -7,7 +7,25 @@ package com.shulga.algorithms.string;
  */
 public class Anagram {
     public static void main(String[] args) {
-        System.out.println(isAnagram("hheea", "eeshh"));
+        System.out.println(isAnagram("hhsee", "eeshh"));
+        System.out.println(isAnagram2("hhsee", "eeshh"));
+        System.out.println(isAnagram("hhses", "eeshh"));
+        System.out.println(isAnagram2("hhses", "eeshh"));
+    }
+
+
+    public static boolean isAnagram2(String s1, String s2) {
+        if (s1.length() != s2.length()) return false;
+        int start = 0;
+        int end = s2.length() - 1;
+        for (int i = 0; i < s1.length(); i++) {
+            if (s1.charAt(start) != s2.charAt(end)){
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
     }
 
     public static boolean isAnagram(String s1, String s2) {

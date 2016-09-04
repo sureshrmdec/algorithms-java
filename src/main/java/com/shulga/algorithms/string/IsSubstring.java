@@ -16,17 +16,17 @@ public class IsSubstring {
                     int n = 0;
                     for (int k = j; k < s2.length(); k++) {
                         if (charsS1[n] != s2.charAt(j)) {
-                            break;
+                            return true;
                         }
-                        return true;
+                    }
+                    if (s2.charAt(j) != charsS1[j + i]) {
+                        break;
                     }
                 }
-                if (s2.charAt(j) != charsS1[j + i]) {
-                    break;
-                }
-
             }
+            break;
         }
+
         return false;
     }
 
@@ -45,20 +45,5 @@ public class IsSubstring {
             }
         }
         return false;
-    }
-
-    public static boolean isRotation(String s1, String s2) {
-        if (s1.length() == s2.length() && s2.length() > 0) {
-            String s2s2 = s2 + s2;
-            if (isSubstring(s2s2, s1)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(isSubstring("hello", "hello"));
-        System.out.println(isRotation("hello", "elloh"));
     }
 }

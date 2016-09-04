@@ -20,9 +20,11 @@ package com.shulga.algorithms.trees;
  * So we know the structure of BST is as following.
  */
 public class ConstructBstFromPreorderTraversal {
-    private class Node {
-        Node left, right;
-        int data;
+    public static void main(String[] args) {
+        ConstructBstFromPreorderTraversal tree = new ConstructBstFromPreorderTraversal();
+        int[] ar = {10, 5, 1, 7, 40, 50};
+        Node root = tree.constructBst(ar, 0, ar.length - 1, 0);
+        tree.preorder(root);
     }
 
     public Node constructBst(int[] A, int s, int e, int counter) {
@@ -31,7 +33,9 @@ public class ConstructBstFromPreorderTraversal {
         root.data = A[s];
         int i;
         for (i = s; i <= e; i++) {
-            if (root.data < A[i]) break;
+            if (root.data < A[i]) {
+                break;
+            }
         }
         root.left = constructBst(A, s + 1, i - 1, counter);
         root.right = constructBst(A, i, e, counter);
@@ -45,11 +49,9 @@ public class ConstructBstFromPreorderTraversal {
         preorder(node.right);
     }
 
-    public static void main(String[] args) {
-        ConstructBstFromPreorderTraversal tree = new ConstructBstFromPreorderTraversal();
-        int[] ar = {10, 5, 1, 7, 40, 50};
-        Node root = tree.constructBst(ar, 0, ar.length - 1, 0);
-        tree.preorder(root);
+    private class Node {
+        Node left, right;
+        int data;
     }
 
 }

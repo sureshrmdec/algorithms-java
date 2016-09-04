@@ -35,4 +35,23 @@ public class SortedArrayToBST {
             this.key = key;
         }
     }
+
+
+    private Node run2(int[] ar, int start, int end) {
+        int mid = start + (start+end)/2;
+        Node node = new Node(ar[mid]);
+        return null;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -1,8 +1,6 @@
 package com.shulga.algorithms.trees;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by eugene on 10/18/15.
@@ -12,16 +10,16 @@ public class BST<K extends Comparable, V> {
 
     public static void main(String[] args) {
         BST<Integer, Integer> bst = new BST<Integer, Integer>();
-//        bst.put(5, 500);
-//        bst.put(4, 400);
-////        bst.put(4,400);
-//        bst.put(3, 300);
-//        bst.put(1, 100);
-//        bst.put(0, 0);
-//        bst.put(-3, -300);
-//        bst.put(10, 1000);
-//        bst.put(20, 2000);
-//        bst.put(7, 700);
+        bst.put(5, 500);
+        bst.put(4, 400);
+//        bst.put(4,400);
+        bst.put(3, 300);
+        bst.put(1, 100);
+        bst.put(0, 0);
+        bst.put(-3, -300);
+        bst.put(10, 1000);
+        bst.put(20, 2000);
+        bst.put(7, 700);
 
         bst.put(10, 100);
         bst.put(5, 50);
@@ -33,21 +31,53 @@ public class BST<K extends Comparable, V> {
 //        bst.dfs(bst.root);
 //        System.out.println(bst.isFull(bst.root));
 //        System.out.println(bst.rankNonReq(7, bst.root));
-        bst.inorder(bst.root);
+        Collection<LinkedList<Integer>> linkedLists = bst.nodesInOrderOfIncreasingDepth(bst.root);
+        for (LinkedList<Integer> list : linkedLists) {
+            for (Integer i : list) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
 //        System.out.println(bst.rank(7));
     }
 
-    public void inorderKthNode(BSTNode node, int k) {
-        if (node == null) return;
-        if (node.size > k) {
-            inorder(node.left);
-        } else if (node.size < k) {
-            inorder(node.right);
-        } else {
-            System.out.println(node.value);
+    Collection<LinkedList<Integer>> nodesInOrderOfIncreasingDepth(BSTNode tree) {
+        class Pair {
+            BSTNode node;
+            int depth;
+            public Pair(BSTNode node, int depth) {
+                this.node = node;
+                this.depth = depth;
+            }
         }
+        Queue<Pair> queue = new LinkedList<>();
+        Map<Integer, LinkedList<Integer>> treeMap = new TreeMap<>();
+        queue.add(new Pair(tree, 1));
+        while (!queue.isEmpty()) {
+            Pair poll = queue.poll();
+            if (treeMap.get(poll.depth) != null) {
+                treeMap.get(poll.depth).add((Integer) poll.node.key);
+            } else {
+                LinkedList<Integer> list = new LinkedList<>();
+                list.add((Integer) poll.node.key);
+                treeMap.put(poll.depth, list);
+            }
+            if (poll.node.left != null) {
+                queue.add(new Pair(poll.node.left, poll.depth + 1));
+            }
+
+            if (poll.node.right != null) {
+                queue.add(new Pair(poll.node.right, poll.depth + 1));
+            }
+        }
+        return treeMap.values();
+    }
+
+    void inorder2(BSTNode tree) {
+
 
     }
+
 
     void inorder(BSTNode tree) {
         LinkedList<Integer> queue = new LinkedList<>();

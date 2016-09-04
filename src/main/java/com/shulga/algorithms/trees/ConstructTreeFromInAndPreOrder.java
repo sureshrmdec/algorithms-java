@@ -2,17 +2,25 @@ package com.shulga.algorithms.trees;
 
 /**
  * Created by eshulga on 6/7/16.
+ * <p>
+ * Preorder traversal of binary tree is
+ * 1 2 4 5 3
+ * Inorder traversal of binary tree is
+ * 4 2 5 1 3
+ * Postorder traversal of binary tree is
+ * 4 5 2 3 1
  */
 public class ConstructTreeFromInAndPreOrder {
     // Java program to construct a tree using inorder and preorder traversal
     static Node root;
     static int preIndex = 0;
+    static int preIndex2 = 0;
 
     // driver program to test above functions
     public static void main(String args[]) {
         ConstructTreeFromInAndPreOrder tree = new ConstructTreeFromInAndPreOrder();
-        char in[] = new char[]{'D', 'B', 'E', 'A', 'F', 'C'};
-        char pre[] = new char[]{'A', 'B', 'D', 'E', 'C', 'F'};
+        int pre[] = new int[]{1, 2, 4, 5, 3};
+        int in[] = new int[]{4, 2, 5, 1, 3};
         int len = in.length;
         Node mynode = tree.buildTree(in, pre, 0, len - 1);
 
@@ -21,41 +29,47 @@ public class ConstructTreeFromInAndPreOrder {
         tree.printInorder(mynode);
     }
 
-    /* Recursive function to construct binary of size len from
-     Inorder traversal in[] and Preorder traversal pre[].  Initial values
-     of inStrt and inEnd should be 0 and len -1.  The function doesn't
-     do any error checking for cases where inorder and preorder
-     do not form a tree */
-    Node buildTree(char in[], char pre[], int inStrt, int inEnd) {
-
+    Node buildTree(int inorder[], int preorder[], int inStrt, int inEnd) {
         if (inStrt > inEnd) {
             return null;
         }
-
-        /* Pick current node from Preorder traversal using preIndex
-         and increment preIndex */
-        Node tNode = new Node(pre[preIndex++]);
+        Node tNode = new Node(preorder[preIndex++]);
 
         /* If this node has no children then return */
         if (inStrt == inEnd) {
             return tNode;
         }
 
-        /* Else find the index of this node in Inorder traversal */
-        int inIndex = search(in, inStrt, inEnd, tNode.data);
+        /* Else find the index of this node inorder Inorder traversal */
+        int inIndex = search(inorder, inStrt, inEnd, tNode.data);
 
-        /* Using index in Inorder traversal, construct left and
+        /* Using index inorder Inorder traversal, construct left and
          right subtress */
-        tNode.left = buildTree(in, pre, inStrt, inIndex - 1);
-        tNode.right = buildTree(in, pre, inIndex + 1, inEnd);
+        tNode.left = buildTree(inorder, preorder, inStrt, inIndex - 1);
+        tNode.right = buildTree(inorder, preorder, inIndex + 1, inEnd);
 
         return tNode;
+    }
+
+    Node buildTree2(int inorder[], int preorder[], int start, int end) {
+        if(start>end){
+            return null;
+        }
+        Node rNode = new Node(preorder[preIndex2]);
+        if(start==end){
+            return rNode;
+        }
+
+        int position  = search(inorder,start,end,rNode.data);
+        rNode.left = buildTree2(inorder,preorder,start,position-1);
+        rNode.right = buildTree2(inorder,preorder,position+1,end);
+        return rNode;
     }
 
     /* UTILITY FUNCTIONS */
     /* Function to find index of value in arr[start...end]
      The function assumes that value is present in in[] */
-    int search(char arr[], int strt, int end, char value) {
+    int search(int arr[], int strt, int end, int value) {
         int i;
         for (i = strt; i <= end; i++) {
             if (arr[i] == value) {
@@ -85,10 +99,10 @@ public class ConstructTreeFromInAndPreOrder {
     // A binary tree node
     class Node {
 
-        char data;
+        int data;
         Node left, right;
 
-        Node(char item) {
+        Node(int item) {
             data = item;
             left = right = null;
         }

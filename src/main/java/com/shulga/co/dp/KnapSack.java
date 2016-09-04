@@ -7,7 +7,8 @@ public class KnapSack {
     public static void main(String[] args) {
         int[] val = {5, 2, 3,4};
 //        System.out.println(new KnapSack().run(50, new int[]{10, 20, 30}, val, val.length));
-        System.out.println(new KnapSack().runDP(4, new int[]{1, 8, 2,1}, val, val.length));
+        int[] weights = {1, 8, 2, 1};
+        System.out.println(new KnapSack().runDP(4, weights, val, val.length));
     }
 
     private int runDP(int W, int[] weights, int[] val, int n) {

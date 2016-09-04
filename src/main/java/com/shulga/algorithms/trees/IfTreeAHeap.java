@@ -24,7 +24,6 @@ public class IfTreeAHeap {
         if (node.left != null && node.right != null) {
             return isFull(node.left) + isFull(node.right);
         }
-
         return 0;
     }
 

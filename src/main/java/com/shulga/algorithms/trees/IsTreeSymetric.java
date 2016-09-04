@@ -21,8 +21,23 @@ public class IsTreeSymetric {
         node2.left.left = new Node(3);
         node2.right.right = new Node(10);
         System.out.println(new IsTreeSymetric().isSymetric(node2));
+        System.out.println(new IsTreeSymetric().isSymetric(node2.left,node2.right));
         System.out.println(new IsTreeSymetric().isSymetricIdentical(node2.left, node2.right));
     }
+
+    public boolean isSymetric(Node node0,Node node1){
+        if(node0==null && node1==null){
+            return true;
+        }
+        if(node0==null || node1==null){
+            return false;
+        }
+        return node0.data==node1.data && isSymetric(node0.left,node1.right) && isSymetric(node0.right,node1.left);
+    }
+
+
+
+
 
     public void preorder(Node node, LinkedList<Node> queue, boolean check) {
         if (node == null) return;

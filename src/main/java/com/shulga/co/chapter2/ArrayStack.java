@@ -31,6 +31,10 @@ public class ArrayStack<Item> implements Iterable<Item> {
         return arr[--nElement];
     }
 
+    public Item peek() {
+        return arr[nElement-1];
+    }
+
     public boolean isEmpty() {
         return nElement == 0;
     }

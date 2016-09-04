@@ -1,4 +1,4 @@
-package com.shulga.algorithms.collections.old;
+package com.shulga.algorithms.linkedlist;
 
 /**
  * Given a circular linked list, implement an algorithm which returns node at the beginning of the loop.
@@ -11,9 +11,20 @@ package com.shulga.algorithms.collections.old;
  */
 public class LinkedListFindCycle {
 
-    public LinkedListNode findCycleStart(LinkedListNode node) {
-        LinkedListNode n1 = node;
-        LinkedListNode n2 = node;
+
+    static class Node{
+        Node next;
+    }
+
+    public static void main(String[] args) {
+
+
+        new LinkedListFindCycle().findCycleStart(new Node());
+    }
+
+    public Node findCycleStart(Node node) {
+        Node n1 = node;
+        Node n2 = node;
 
         while (n2 != null) {
             n1 = n1.next;

@@ -1,4 +1,4 @@
-package com.shulga.algorithms.collections.old;
+package com.shulga.algorithms.linkedlist;
 
 /**
  * Created by ievgen on 10/10/2014.

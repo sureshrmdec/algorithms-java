@@ -1,4 +1,4 @@
-package com.shulga.algorithms.collections.old.adt;
+package com.shulga.algorithms.stack;
 
 import java.util.Iterator;
 
