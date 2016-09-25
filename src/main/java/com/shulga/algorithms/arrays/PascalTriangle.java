@@ -1,5 +1,8 @@
 package com.shulga.algorithms.arrays;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by eshulga on 6/22/16.
  * 1
@@ -12,7 +15,27 @@ package com.shulga.algorithms.arrays;
 public class PascalTriangle {
 
     public static void main(String[] args) {
-        new PascalTriangle().run(5);
+        new PascalTriangle().runNew(7);
+    }
+
+
+    private void runNew(int num) {
+        List<List<Integer>> pascal = new ArrayList<>();
+        for (int i = 0; i < num; i++) {
+            pascal.add(i, new ArrayList<>());
+            for (int j = 0; j <= i; j++) {
+                if (j == 0 || j == i) {
+                    pascal.get(i).add(1);
+                    System.out.print(1);
+                } else {
+                    Integer one = pascal.get(i - 1).get(j - 1);
+                    Integer two = pascal.get(i - 1).get(j);
+                    pascal.get(i).add(one + two);
+                    System.out.print(one + two);
+                }
+            }
+            System.out.println();
+        }
     }
 
     private void run(int num) {

@@ -12,31 +12,31 @@ public class CyclicRightShiftLinkedList {
         node.next.next.next = new Node(4);
         node.next.next.next.next = new Node(5);
         Node run = new CyclicRightShiftLinkedList().run(node, 2);
-        while(run!=null){
+        while (run != null) {
             System.out.print(run.data + " ");
             run = run.next;
         }
     }
 
 
-    private Node run(Node node,int n) {
+    private Node run(Node node, int n) {
         Node first = node;
         Node current = node;
         Node currenttarget = node;
         int c = 0;
         Node localEnd = node;
-        while(current!=null){
-            if(c>=n){
-                localEnd=currenttarget;
-                currenttarget=currenttarget.next;
+        while (current != null) {
+            if (c >= n) {
+                localEnd = currenttarget;
+                currenttarget = currenttarget.next;
             }
-            current=current.next;
+            current = current.next;
             c++;
         }
         Node newFirst = localEnd.next;
         current = newFirst;
-        localEnd.next=null;
-        while(current.next!=null){
+        localEnd.next = null;
+        while (current.next != null) {
             current = current.next;
         }
         current.next = first;

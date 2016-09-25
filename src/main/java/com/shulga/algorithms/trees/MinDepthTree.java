@@ -14,27 +14,23 @@ public class MinDepthTree {
         root.left = new Node(0);
         root.right = new Node(4);
         root.right.left = new Node(3);
+//        root.right.left.left = new Node(2);
         root.right.right = new Node(5);
         MinDepthTree l = new MinDepthTree();
         System.out.println(l.isFull2(root));
+        System.out.println(l.isFull(root));
+        System.out.println(l.minDepth(root));
     }
 
-    public int minDepth2(Node root) {
-        if(root==null){
-            return 0;
-        }
-        if(root.left!=null && root.right!=null){
-            return 1 + Math.min(minDepth2(root.left),minDepth2(root.right));
-        }else{
-            return 0;
-        }
-    }
+
+
 
     public boolean isFull2(Node root){
-        if(root==null){
+        if(root==null) return false;
+        if(root.left==null && root.right==null){
             return true;
         }
-        if((root.left!=null && root.right==null) || (root.left==null && root.right!=null)){
+        if(root.left==null || root.right==null){
             return false;
         }
         return isFull2(root.left) && isFull2(root.right);
