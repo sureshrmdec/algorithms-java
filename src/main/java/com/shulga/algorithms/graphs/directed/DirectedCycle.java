@@ -41,6 +41,7 @@ public class DirectedCycle {
             }
 
         }
+        onStack[m] = false;
     }
 
     void printCycle(){

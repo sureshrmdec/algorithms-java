@@ -73,11 +73,6 @@ public class BST<K extends Comparable, V> {
         return treeMap.values();
     }
 
-    void inorder2(BSTNode tree) {
-
-
-    }
-
 
     void inorder(BSTNode tree) {
         LinkedList<Integer> queue = new LinkedList<>();
