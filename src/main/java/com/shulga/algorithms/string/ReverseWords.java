@@ -5,8 +5,8 @@ package com.shulga.algorithms.string;
  */
 public class ReverseWords {
 
-    public static String reverseString(String str) {
-        char[] chars = str.toCharArray();
+    public static String reverseString(String str, int s, int e) {
+        char[] chars = str.substring(s, e + 1).toCharArray();
         int begin = 0;
         int end = chars.length - 1;
 
@@ -16,23 +16,21 @@ public class ReverseWords {
         return new String(chars);
     }
 
-    //TODO finish
+    //TODO finish my task
     public static String reverseWords(String str) {
-        char[] chars = str.toCharArray();
-        int begin = 0;
-        int end = 0;
-        int length = str.length();
-        String reversed = reverseString(str);
-
-        while (end < length) {
-            if (chars[end] != ' ') {
-                begin = end;
-                while (end < length && chars[end] != ' ') {
-                    end++;
-                }
+        int start = 0;
+        String reversed = reverseString(str, 0, str.length() - 1);
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < reversed.length(); i++) {
+            if (reversed.charAt(i) == ' ') {
+                sb.append(reverseString(reversed, start, i - 1));
+                sb.append(" ");
+                start = i + 1;
             }
         }
-        return new String(chars);
+        sb.append(reverseString(reversed, start, reversed.length() - 1));
+
+        return sb.toString();
     }
 
     private static void swapString(int begin, int end, String[] split) {
@@ -48,7 +46,9 @@ public class ReverseWords {
     }
 
     public static void main(String[] args) {
-        System.out.println(reverseString("hello world"));
-        System.out.println(reverseWords("hello world I'm Here"));
+        String str = "hello world";
+        System.out.println(reverseString(str, 0, str.length() - 1));
+        String str1 = "hello world I'm Here";
+        System.out.println(reverseWords(str1));
     }
 }

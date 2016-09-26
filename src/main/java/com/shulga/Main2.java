@@ -1,5 +1,10 @@
 package com.shulga;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * You are given a matrix with mm rows and nn columns of cells, each of which contains either 11 or 00.
  * Two cells are said to be connected if they are adjacent to each other horizontally, vertically, or diagonally.
@@ -35,7 +40,9 @@ package com.shulga;
  * 0 1 0 0
  * 1 1 0 0
  */
-public class Main {
+public class Main2 {
+    public static void main(String[] args) {
 
+    }
 
 }

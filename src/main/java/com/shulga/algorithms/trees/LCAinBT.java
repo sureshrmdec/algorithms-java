@@ -28,7 +28,7 @@ public class LCAinBT {
         if (rightTree.seenNodes == 2) {
             return rightTree;
         }
-        int seenNodes = tree.data == node0 || tree.data == node1 ? 1 : 0 + rightTree.seenNodes + leftTree.seenNodes;
+        int seenNodes = rightTree.seenNodes + leftTree.seenNodes + tree.data == node1 ? 1 : 0 + tree.data == node0 ? 1 : 0;
         return new LCANode(seenNodes == 2 ? tree : null, seenNodes);
     }
 

@@ -23,10 +23,10 @@ public class InsetBeforeNElementFromTheEnd {
         }
     }
 
-    private static void insertBeforeNElement(Node list, int key, int k) {
-        Node current = list;
+    private static void insertBeforeNElement(Node node, int key, int k) {
+        Node current = node;
         Node previosTarget = null;
-        Node target = list;
+        Node target = node;
         int start = 0;
         while (current != null) {
             start++;
