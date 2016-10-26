@@ -41,8 +41,8 @@ public class PrintAllCombinationOfSizeNFromArray {
 
     /*Driver function to check for above function*/
     public static void main(String[] args) {
-        int arr[] = {1, 2, 3, 4, 5};
-        int r = 3;
+        int arr[] = {1, 2, 3};
+        int r = 2;
         int n = arr.length;
         printCombination(arr, n, r);
     }

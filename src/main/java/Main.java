@@ -1,16 +1,24 @@
 import java.io.*;
-import java.util.StringTokenizer;
+import java.util.*;
 
+/**
+ */
 public class Main {
+
     public static void main(String[] args) {
-        InputStream inputStream = System.in;
-        OutputStream outputStream = System.out;
-        InputReader in = new InputReader(inputStream);
-        PrintWriter out = new PrintWriter(outputStream);
-        TaskA solver = new TaskA();
-        solver.solve(in, out);
-        out.close();
+//        InputStream inputStream = System.in;
+//        OutputStream outputStream = System.out;
+//        InputReader in = new InputReader(inputStream);
+//        PrintWriter out = new PrintWriter(outputStream);
+//        TaskA solver = new TaskA();
+//        solver.solve(in, out);
+//        out.close();
+
     }
+
+
+
+
 
     static class TaskA {
         private int runTask(char[] s1, int c, int n) {
@@ -21,7 +29,7 @@ public class Main {
                 return runTask(s1, c - 1, n);
             }
             int repaint = runTask(s1, c - 1, n);
-            int swapp = runTask(swap(s1, c, c - 1), c-1, n);
+            int swapp = runTask(swap(s1, c, c - 1), c - 1, n);
             return 1 + Math.min(
                     repaint,
                     swapp
@@ -64,6 +72,16 @@ public class Main {
 
         public int nextInt() {
             return Integer.parseInt(next());
+        }
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
         }
     }
 }

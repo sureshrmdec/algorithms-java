@@ -6,30 +6,34 @@ package com.shulga.algorithms.permutations;
  */
 public class ComputeNextPermutation {
     public static void main(String[] args) {
-        int[] run = new ComputeNextPermutation().run(new int[]{1, 3, 9, 8, 7});
+//        int[] run = new ComputeNextPermutation().run(new int[]{3,2,1});
+        int[] run = new ComputeNextPermutation().run(new int[]{});
         for (int i = 0; i < run.length; i++) {
             System.out.print(run[i] + " ");
         }
     }
 
-    private int[] run(int[] perm) {
-        int end = perm.length - 2;
-        while (perm[end] > perm[end + 1] && end>=0) {
+    private int[] run(int[] nums) {
+        if(nums.length==0) return nums;
+        int end = nums.length - 2;
+        while (end>=0 && nums[end] > nums[end + 1]) {
             end--;
         }
-        int s = end + 1, e = perm.length - 1;
+        int s = end + 1, e = nums.length - 1;
         //reverse
         while (s < e) {
-            int tmp = perm[s];
-            perm[s] = perm[e];
-            perm[e] = tmp;
+            int tmp = nums[s];
+            nums[s] = nums[e];
+            nums[e] = tmp;
             s++;
             e--;
         }
-        int tmp = perm[end];
-        perm[end] = perm[end + 1];
-        perm[end + 1] = tmp;
-        return perm;
+        if(end!=-1) {
+            int tmp = nums[end];
+            nums[end] = nums[end + 1];
+            nums[end + 1] = tmp;
+        }
+        return nums;
 
     }
 }

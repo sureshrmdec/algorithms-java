@@ -80,7 +80,7 @@ public class KNearest {
     }
 
     /**
-     * Test for data points loaded
+     * BasicOps for data points loaded
      */
     private boolean isLoaded() {
         return size() > 0;

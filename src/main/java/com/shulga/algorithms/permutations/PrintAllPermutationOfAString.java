@@ -13,7 +13,7 @@ public class PrintAllPermutationOfAString {
     }
 
     public static void main(String[] args) {
-        String s = "1234";
+        String s = "123";
         Counter c = new Counter();
         new PrintAllPermutationOfAString().run(s.toCharArray(), 0, s.length(), c);
         System.out.println(c.counter);

@@ -8,10 +8,10 @@ package com.shulga.algorithms.permutations;
  */
 public class PrintAllPairsCombinationsWithRepetition {
     public static void main(String[] args) {
-        String str = "abc";
+        String str = "0123";
         Counter c = new Counter();
         new PrintAllPairsCombinationsWithRepetition().run(str, 2, str.length(), c);
-        System.out.println(c.counter);
+        System.out.println("Total: " + c.counter);
     }
 
     private void run(String str, int k, int length, Counter c) {

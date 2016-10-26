@@ -15,8 +15,8 @@ package com.shulga.co.dp;
 public class EditStringDistance {
 
     public static void main(String[] args) {
-        System.out.println(new EditStringDistance().runDP("sunday", "saturday"));
-        System.out.println(new EditStringDistance().run("sunday", "saturday"));
+        System.out.println(new EditStringDistance().runDP("sunday", ""));
+//        System.out.println(new EditStringDistance().run("sunday", "saturday"));
     }
 
     private int runDP(String s1, String s2) {
@@ -88,25 +88,21 @@ public class EditStringDistance {
                 }
             }
         }
+        printMatrix(dp);
         return dp[m][n];
     }
 
+    void printMatrix(int[][] m){
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m[0].length; j++) {
+                System.out.print(m[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
     public int min(int i1, int i2, int i3) {
         return Math.min(i1, Math.min(i2, i3));
     }
 
-    /**
-     * Created by eugene on 3/6/16.
-     */
-    public static class EditDistance {
 
-        public static void main(String[] args) {
-            System.out.println(new EditDistance().run("geeks","geekss"));
-        }
-
-        private int run(String s1, String s2) {
-
-            return 0;
-        }
-    }
 }
