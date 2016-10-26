@@ -1,7 +1,11 @@
 import java.io.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
 
-public class SolutionB {
+public class Solution1 {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -15,50 +19,21 @@ public class SolutionB {
     static class TaskA {
 
         public void solve(int[] arr, InputReader in, PrintWriter out) {
-            int n = in.nextInt();
-            if (n == 1) {
-                out.print("YES");
-                return;
-            }
-            int[] ar = new int[n];
-            for (int i = 0; i < n; i++) {
-                ar[i] = in.nextInt();
-            }
-            int min = Integer.MAX_VALUE;
-            int max = Integer.MIN_VALUE;
-            for (int i = 0; i < n; i++) {
-                min = Math.min(min, ar[i]);
-                max = Math.max(max, ar[i]);
-            }
-            int dif;
-            if ((max - min) % 2 != 0) {
-                dif = (max - min);
-            } else {
-                dif = (max - min) / 2;
-            }
-
-            int same = ar[0];
-            if (ar[0] == max) {
-                same = ar[0] - dif;
-            } else if (ar[0] == min) {
-                same = ar[0] + dif;
-            }
-            for (int i = 0; i < n; i++) {
+            int[] ar = new int[]{10, 20 ,20 ,10 ,10 ,30 ,50 ,10 ,20};
+            Map<Integer,Integer> map = new HashMap<>();
+            for (int i = 0; i < ar.length; i++) {
                 int current = ar[i];
-                if (current == same) {
-                    continue;
-                } else if (current == max) {
-                    current -= dif;
-                } else if (current == min) {
-                    current += dif;
+                if(map.containsKey(current)) {
+                    map.put(current,map.get(current)+1);
+                }else{
+                    map.put(current,1);
                 }
-                if (current != same) {
-                    out.print("NO");
-                    return;
-                }
-
             }
-            out.print("YES");
+            int res = 0;
+            for (Map.Entry<Integer,Integer> entry:map.entrySet()){
+                res+=entry.getValue()/2;
+            }
+            out.println(res);
         }
 
     }
