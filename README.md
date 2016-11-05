@@ -1,1 +1,1 @@
-basic data structures and brain teasers
+Algorithms and data structures
