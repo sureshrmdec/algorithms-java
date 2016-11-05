@@ -1,16 +1,13 @@
 package com.shulga.algorithms.heap;
 
-import com.shulga.co.chapter4.HeapMaxPriority;
+import com.shulga.co.ch4.HeapMaxPriority;
 
 /**
  * Created by eshulga on 6/24/16.
  */
 public class KLargestElementInAHeap {
-    private static class Pair{
-        int data;
-        int index;
-    }
     private int[] ar;
+
     public static void main(String[] args) {
         HeapMaxPriority h = new HeapMaxPriority();
         h.insert(3);
@@ -18,16 +15,20 @@ public class KLargestElementInAHeap {
         h.insert(1);
         h.insert(10);
         h.insert(-5);
-        new KLargestElementInAHeap().kLargest(h,4);
+        new KLargestElementInAHeap().kLargest(h, 4);
     }
 
     private int kLargest(HeapMaxPriority h, int k) {
-        Comparable[] ar = h.ar;
-        HeapMaxPriority temp = new HeapMaxPriority();
+        int[] temp = new int[k];
         for (int i = 0; i < k; i++) {
-
+            temp[i] = (int) h.delMax();
         }
-        return 1;
+        for (int i = 0; i < k; i++) {
+            h.insert(temp[i]);
+        }
+        return temp[k - 1];
     }
+
+
 
 }

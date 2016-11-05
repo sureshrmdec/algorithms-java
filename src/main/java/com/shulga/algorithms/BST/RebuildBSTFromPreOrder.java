@@ -64,6 +64,19 @@ public class RebuildBSTFromPreOrder {
         return node;
     }
 
+    private Node buildNTime1(int[] preOrder, int lower, int upper,Counter c) {
+        if(c.c==preOrder.length) return null;
+
+        if(preOrder[c.c]<lower || preOrder[c.c]>upper){
+            return null;
+        }
+        c.c++;
+        Node node = new Node(preOrder[c.c]);
+        node.left = buildNTime1(preOrder,lower,node.key,c);
+        node.right= buildNTime1(preOrder,node.key,upper,c);
+        return node;
+    }
+
 
     void inorder(Node node) {
         if (node == null) return;

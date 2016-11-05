@@ -45,6 +45,7 @@ public class BST<K extends Comparable, V> {
         class Pair {
             BSTNode node;
             int depth;
+
             public Pair(BSTNode node, int depth) {
                 this.node = node;
                 this.depth = depth;
@@ -109,7 +110,7 @@ public class BST<K extends Comparable, V> {
         if (tree == null && subtree == null) {
             return true;
         }
-        if (tree == null || subtree == null) {
+        if (tree == null || subtree == null || tree.key!=subtree.key) {
             return false;
         }
         return isIdentical(tree.left, subtree.left) && isIdentical(tree.right, subtree.right);

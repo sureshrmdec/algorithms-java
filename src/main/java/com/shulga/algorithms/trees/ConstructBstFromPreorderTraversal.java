@@ -23,11 +23,11 @@ public class ConstructBstFromPreorderTraversal {
     public static void main(String[] args) {
         ConstructBstFromPreorderTraversal tree = new ConstructBstFromPreorderTraversal();
         int[] ar = {10, 5, 1, 7, 40, 50};
-        Node root = tree.constructBst(ar, 0, ar.length - 1, 0);
+        Node root = tree.constructBst(ar, 0, ar.length - 1);
         tree.preorder(root);
     }
 
-    public Node constructBst(int[] A, int s, int e, int counter) {
+    public Node constructBst(int[] A, int s, int e) {
         if (e < s) return null;
         Node root = new Node();
         root.data = A[s];
@@ -37,8 +37,8 @@ public class ConstructBstFromPreorderTraversal {
                 break;
             }
         }
-        root.left = constructBst(A, s + 1, i - 1, counter);
-        root.right = constructBst(A, i, e, counter);
+        root.left = constructBst(A, s + 1, i - 1);
+        root.right = constructBst(A, i, e);
         return root;
     }
 

@@ -10,7 +10,7 @@ import java.util.List;
 public class FindAllAnagrams {
     public static void main(String[] args) {
         System.out.println(new FindAllAnagrams().findAnagrams("cbaabc", "abc"));
-        System.out.println(new FindAllAnagrams().findAnagrams2("cbaabc", "abc"));
+//        System.out.println(new FindAllAnagrams().findAnagrams2("cbaabc", "abc"));
 //        System.out.println(new FindAllAnagrams().findAnagrams("cbaebabacd", "abc"));
     }
 
@@ -27,10 +27,11 @@ public class FindAllAnagrams {
         while (right < s.length()) {
             //move right everytime, if the character exists in p's hash, decrease the count
             //current hash value >= 1 means the character is existing in p
-            if (hash[s.charAt(right++)]-- >= 1) {
+
+            if (hash[s.charAt(right)]-- >= 1) {
                 count--;
             }
-
+            right++;
             //when the count is down to 0, means we found the right anagram
             //then add window's left to result list
             if (count == 0) {
@@ -54,19 +55,23 @@ public class FindAllAnagrams {
 
         int left = 0, right = 0;
         int[] hash = new int[256];
-        for (int i = 0; i < p.length(); i++) {
-            hash[p.charAt(i)]++;
+        for (char c : p.toCharArray()) {
+            hash[c]++;
         }
-        int count = 0;
+        int count = p.length();
         while (right < s.length()) {
-            if (hash[s.charAt(right++)] >= 1) {
-                count++;
+            if (hash[s.charAt(right)] >= 1) {
+                hash[s.charAt(right)]--;
+                right++;
+                count--;
             }
-            if (count == p.length()) {
+            if (count == 0) {
                 res.add(left);
             }
-            if (right - left == p.length() && hash[s.charAt(left++)]++ >= 0) {
-                count--;
+            if (right - left == p.length() && hash[s.charAt(left)] >= 0) {
+                left++;
+                hash[s.charAt(left)]++;
+                count++;
             }
         }
         return res;

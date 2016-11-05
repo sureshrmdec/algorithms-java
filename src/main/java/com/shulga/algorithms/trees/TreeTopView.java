@@ -4,9 +4,11 @@ import java.util.*;
 
 /**
  * Print Nodes in Top View of Binary Tree
- * Top view of a binary tree is the set of nodes visible when the tree is viewed from the top. Given a binary tree, print the top view of it. The output nodes can be printed in any order. Expected time complexity is O(n)
+ * Top view of a binary tree is the set of nodes visible when the tree is viewed from the top. Given a binary tree, print the top view of it.
+ * The output nodes can be printed in any order. Expected time complexity is O(n)
  * <p>
- * A node x is there in output if x is the topmost node at its horizontal distance. Horizontal distance of left child of a node x is equal to horizontal distance of x minus 1, and that of right child is horizontal distance of x plus 1.
+ * A node x is there in output if x is the topmost node at its horizontal distance. Horizontal distance of left child of a node x is equal
+ * to horizontal distance of x minus 1, and that of right child is horizontal distance of x plus 1.
  * <p>
  *      1
  *   /     \

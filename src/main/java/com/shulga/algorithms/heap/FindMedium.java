@@ -1,7 +1,7 @@
 package com.shulga.algorithms.heap;
 
-import com.shulga.co.chapter4.HeapMaxPriority;
-import com.shulga.co.chapter4.HeapMinPriorityQueue;
+import com.shulga.co.ch4.HeapMaxPriority;
+import com.shulga.co.ch4.HeapMinPriorityQueue;
 
 /**
  * Created by eshulga on 6/15/16.
@@ -38,7 +38,7 @@ public class FindMedium {
 
             //print mean
             if (minPQ.size() == maxPQ.size()) {
-                System.out.println(( (Integer)minPQ.peek() +  (Integer)maxPQ.peek()) / 2);
+                System.out.println(((Integer) minPQ.peek() + (Integer) maxPQ.peek()) / 2);
             } else if (minPQ.size() > maxPQ.size()) {
                 System.out.println(minPQ.peek());
             }

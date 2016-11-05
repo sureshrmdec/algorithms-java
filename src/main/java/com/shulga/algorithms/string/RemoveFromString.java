@@ -16,15 +16,15 @@ public class RemoveFromString {
             flags[remAr[i]] = true;
         }
 
-        int src = 0;
-        int dst = 0;
-        while (src < str.length()) {
-            if (!flags[strAr[src]]) {
-                strAr[dst++] = strAr[src];
+        int c = 0;
+        int tail = 0;
+        while (c < str.length()) {
+            if (!flags[strAr[c]]) {
+                strAr[tail++] = strAr[c];
             }
-            src++;
+            c++;
         }
-        return new String(strAr, 0, dst);
+        return new String(strAr, 0, tail);
     }
 
     public static void main(String[] args) {

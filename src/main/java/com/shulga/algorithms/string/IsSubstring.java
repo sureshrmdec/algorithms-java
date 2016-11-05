@@ -7,43 +7,29 @@ package com.shulga.algorithms.string;
  */
 public class IsSubstring {
 
-    public static boolean isSubstringRotation(String s1, String s2) {
-        char[] charsS1 = s1.toCharArray();
-        for (int i = 0; i < charsS1.length; i++) {
-            if (s2.charAt(0) != charsS1[i]) continue;
-            for (int j = 0; j < s1.length(); j++) {
-                if (j == s1.length() - i) {
-                    int n = 0;
-                    for (int k = j; k < s2.length(); k++) {
-                        if (charsS1[n] != s2.charAt(j)) {
-                            return true;
-                        }
-                    }
-                    if (s2.charAt(j) != charsS1[j + i]) {
-                        break;
-                    }
-                }
-            }
-            break;
-        }
-
-        return false;
+    public static void main(String[] args) {
+        System.out.println(isSubstringRotation2("waterbottle","erbos"));
     }
 
-    public static boolean isSubstring(String s1, String s2) {
-        char[] charsS1 = s1.toCharArray();
-        for (int i = 0; i < charsS1.length; i++) {
-            if (s2.charAt(0) != charsS1[i]) continue;
+    public static boolean isSubstringRotation2(String s1, String s2) {
+        char[] chars = s1.toCharArray();
+        int s2Start=0;
+        for (int i = 0; i < chars.length; i++) {
+            if(chars[i] !=s2.charAt(s2Start)) continue;
+            int iSoFar=i;
             int j;
             for (j = 0; j < s2.length(); j++) {
-                if (s2.charAt(j) != charsS1[j + i]) {
+                if(s2.charAt(j)!=s1.charAt(iSoFar)){
                     break;
                 }
+                iSoFar++;
+                if(iSoFar==s1.length()) {
+                    iSoFar=0;
+                }
             }
-            if (j == s2.length()) {
-                return true;
-            }
+            if(j==s2.length()) return true;
         }
         return false;
     }
+
 }

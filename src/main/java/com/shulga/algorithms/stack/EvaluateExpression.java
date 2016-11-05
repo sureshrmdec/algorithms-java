@@ -1,6 +1,6 @@
 package com.shulga.algorithms.stack;
 
-import com.shulga.co.chapter2.ArrayStack;
+import com.shulga.co.ch2.ArrayStack;
 
 /**
  * Created by ievgen on 10/7/2014.

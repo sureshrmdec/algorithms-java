@@ -8,6 +8,28 @@ package com.shulga.algorithms.string;
  */
 public class RemoveDuplicatesInString {
 
+
+    public static String removeDuplicatesNoExtraSpace2(String str) {
+        char[] chars = str.toCharArray();
+        int tail=1;
+        for (int i = 1; i < chars.length; i++) {
+            int j;
+            for (j = 0; j < tail; j++) {
+                if(chars[j]==chars[i]){
+                    break;
+                }
+            }
+            if(j==tail){
+                chars[tail++] = chars[i];
+            }
+        }
+        while(tail<str.length()){
+            chars[tail] = 0;
+            tail++;
+        }
+        return new String(chars);
+    }
+
     public static String removeDuplicatesNoExtraSpace(String str) {
         if (str == null) return str;
         int length = str.length();
@@ -58,7 +80,8 @@ public class RemoveDuplicatesInString {
     }
 
     public static void main(String[] args) {
-        System.out.println(removeDuplicates("heello"));
+//        System.out.println(removeDuplicates("heello"));
         System.out.println(removeDuplicatesNoExtraSpace("heello"));
+        System.out.println(removeDuplicatesNoExtraSpace2("heello"));
     }
 }

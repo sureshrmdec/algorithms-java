@@ -17,7 +17,7 @@ public class CheckIfTreeIsSubtree {
 
     boolean isIdentical2(Node node1,Node node2){
         if(node1==null && node2==null) return true;
-        if(node1==null && node2==null){
+        if(node1==null || node2==null){
             return false;
         }
         return node1.data==node2.data && isIdentical(node1.left,node2.left) && isIdentical(node1.right,node2.right);

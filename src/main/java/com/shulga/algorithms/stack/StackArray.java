@@ -6,12 +6,10 @@ public class StackArray<T> implements Stack<T>, Iterable<T> {
     private T[] ar;
     private int nCount = 0;
 
-    @SuppressWarnings("unchecked")
     public StackArray() {
         ar = (T[]) new Object[10];
     }
 
-    @Override
     public void push(T data) {
         if (nCount == ar.length) {
             resize(2 * ar.length);
@@ -19,7 +17,6 @@ public class StackArray<T> implements Stack<T>, Iterable<T> {
         ar[nCount++] = data;
     }
 
-    @SuppressWarnings("unchecked")
     private void resize(int capacity) {
         T[] copy = (T[]) new Object[capacity];
         for (int i = 0; i < nCount; i++) {

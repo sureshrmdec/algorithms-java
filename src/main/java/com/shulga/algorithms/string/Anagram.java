@@ -13,7 +13,6 @@ public class Anagram {
         System.out.println(isAnagram2("hhses", "eeshh"));
     }
 
-
     public static boolean isAnagram2(String s1, String s2) {
         if (s1.length() != s2.length()) return false;
         int start = 0;

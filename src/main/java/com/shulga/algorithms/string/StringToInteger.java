@@ -98,8 +98,9 @@ public class StringToInteger {
 
 
     public static void main(String[] args) {
-        System.out.println(intToString(782));
         System.out.println(stringToInteger("-876"));
+        System.out.println(convertStringToNum("-876"));
+        System.out.println(intToString(782));
         StringToInteger stringToInteger = new StringToInteger();
         System.out.println(stringToInteger.stringToInt("-444"));
     }

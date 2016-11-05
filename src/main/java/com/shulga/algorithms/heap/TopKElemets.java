@@ -17,14 +17,15 @@ public class TopKElemets {
     };
 
     public static void main(String[] args) {
-        List<Integer> run = new TopKElemets().run(new int[]{50, 40, 30, 20, 25, 18, 10, 1}, 5);
+        // heap ordered array
+        List<Integer> run = new TopKElemets().run(new int[]{50, 40, 30, 20, 25, 18, 10, 100}, 4);
         for (Integer i : run) {
             System.out.print(i + " ");
         }
     }
 
     private List<Integer> run(int[] heap, int k) {
-        PriorityQueue<HeapEntry> pq = new PriorityQueue<>(11, comp);
+        PriorityQueue<HeapEntry> pq = new PriorityQueue<>(comp);
         List<Integer> result = new ArrayList<>();
         pq.add(new HeapEntry(heap[0], 0));
         for (int i = 0; i < k; i++) {
