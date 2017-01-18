@@ -17,7 +17,7 @@ public class DfsCombinations {
 //            System.out.println(l);
 //        }
 //        System.out.println();
-        List<String> combinations = new DfsCombinations().combinations("1134", 3);
+        List<String> combinations = new DfsCombinations().combinations("1234", 3);
         System.out.println(combinations);
         System.out.println("Total: "+combinations.size());
     }

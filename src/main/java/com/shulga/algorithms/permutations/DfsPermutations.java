@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class DfsPermutations {
     public static void main(String[] args) {
-        List<String> permute = new DfsPermutations().permute("1223", 3);
+        List<String> permute = new DfsPermutations().permute("1234", 4);
         System.out.println(permute);
         System.out.println("Total: " + permute.size());
     }

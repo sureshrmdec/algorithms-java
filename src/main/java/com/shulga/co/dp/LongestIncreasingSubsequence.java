@@ -1,5 +1,7 @@
 package com.shulga.co.dp;
 
+import java.util.Arrays;
+
 /**
  * Let us discuss Longest Increasing Subsequence (LIS) problem as an example problem that can be solved using Dynamic Programming.
  * The longest Increasing Subsequence (LIS) problem is to find the length of the longest subsequence of a given sequence such that all elements
@@ -22,12 +24,22 @@ package com.shulga.co.dp;
 public class LongestIncreasingSubsequence {
 
     public static void main(String[] args) {
-        System.out.println(new LongestIncreasingSubsequence().run(new int[]{10, 22, 9,  120, 33, 21, 50, 41, 60, 80}));
-        System.out.println(new LongestIncreasingSubsequence().runReq(new int[]{10, 22, 9,  33, 21, 50, 41, 60, 80}));
+        System.out.println(new LongestIncreasingSubsequence().runFaster(new int[]{10, 22, 9, 120, 33, 21, 50, 41, 60, 80}));
+        System.out.println(new LongestIncreasingSubsequence().runFaster(new int[]{100, 22, 23}));
     }
 
-    private int runReq(int[] A) {
-        return runTaskReq(A, 1);
+    private int runFaster(int[] nums) {
+        int[] dp = new int[nums.length];
+        int len = 0;
+
+        for (int x : nums) {
+            int i = Arrays.binarySearch(dp, 0, len, x);
+            if (i < 0) i = -(i + 1);
+            dp[i] = x;
+            if (i == len) len++;
+        }
+
+        return len;
     }
 
     private int runTaskReq(int[] A, int n) {
@@ -39,6 +51,7 @@ public class LongestIncreasingSubsequence {
         int[] dp = new int[A.length];
         dp[0] = 1;
         for (int i = 1; i < A.length; i++) {
+            dp[i] = 1;
             for (int j = 0; j < i; j++) {
                 if (A[i] > A[j] && dp[i] < dp[j] + 1) {
                     dp[i] = 1 + dp[j];

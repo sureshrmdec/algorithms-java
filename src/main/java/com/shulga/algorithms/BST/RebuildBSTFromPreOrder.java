@@ -35,7 +35,7 @@ public class RebuildBSTFromPreOrder {
         new RebuildBSTFromPreOrder().preorder(node);
     }
 
-    private Node buildNTime(int[] preOrder, int lower, int upper,Counter c) {
+    private Node buildNTime(int[] preOrder, int lower, int upper, Counter c) {
         if(c.c==preOrder.length) return null;
 
         int rootValue = preOrder[c.c];

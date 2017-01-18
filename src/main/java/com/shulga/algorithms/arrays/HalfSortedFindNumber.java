@@ -6,7 +6,7 @@ package com.shulga.algorithms.arrays;
  */
 public class HalfSortedFindNumber {
     public static void main(String[] args) {
-        System.out.println(new HalfSortedFindNumber().run(new int[]{2, 6, 8, 9, 15, 20, 18, 16, 12, 7, 1}, 1));
+        System.out.println(new HalfSortedFindNumber().run(new int[]{2, 6, 8, 9, 15, 20, 18, 16, 12, 7, 1}, 12));
     }
 
     private int run(int[] ar, int num) {
@@ -15,13 +15,13 @@ public class HalfSortedFindNumber {
         int ge = ar.length - 1;
         int s = gs;
         int e = gm;
-        Integer mid = binarySearchReq(ar, num, s, e);
+        Integer mid = binarySearch(ar, num, s, e,0);
         if (mid >= 0) {
             return mid;
         }
         s = gm;
         e = ge;
-        mid = binarySearchReq(ar, num, s, e);
+        mid = binarySearch(ar, num, s, e, 1);
         return mid;
     }
 
@@ -37,15 +37,23 @@ public class HalfSortedFindNumber {
         }
     }
 
-    private Integer binarySearch(int[] ar, int num, int s, int e) {
+    private Integer binarySearch(int[] ar, int num, int s, int e,int reverse) {
         while (s <= e) {
             int mid = s + (e - s) / 2;
             if (ar[mid] == num) {
                 return mid;
             } else if (ar[mid] > num) {
-                s = mid + 1;
+                if(reverse==1){
+                    s = mid + 1;
+                }else {
+                    e = mid-1;
+                }
             } else {
-                e = mid - 1;
+                if(reverse==1){
+                    e = mid - 1;
+                }else {
+                    s = mid+1;
+                }
             }
         }
         return -1;
