@@ -24,6 +24,26 @@ public class DirectedCycle {
         }
     }
 
+    private Stack<Integer> dfs2(Digraph g,int m) {
+        marked[m]=true;
+        onStack[m] = true;
+        for (Integer child:g.adj(m)){
+            if(!cycle.isEmpty()){
+                edgeTo[child] = m;
+                return cycle;
+            }else if(!marked[child]){
+                dfs2(g,child);
+            }else if(!onStack[child]){
+                for (int i = m; i != child; i = edgeTo[i]) {
+                    cycle.push(i);
+                }
+                cycle.push(child);
+            }
+        }
+        onStack[m] = false;
+        return cycle;
+    }
+
     private void dfs(Digraph g,int m) {
         marked[m] = true;
         onStack[m] = true;
